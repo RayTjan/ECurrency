@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.example.ecurrency"
-        minSdkVersion 19
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -32,4 +32,5 @@ dependencies {
     implementation "com.android.support:cardview-v7:29.0.1"
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.loopj.android:android-async-http:1.4.10'
 }
