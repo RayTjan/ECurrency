@@ -83,7 +83,9 @@ public class HomeFragment extends Fragment {
                         JSONObject obj = list.getJSONObject(i);
                         Student s = new Student(obj.getString("id"),obj.getString("nim"),
                                 obj.getString("name"),obj.getString("email"),obj.getString("phone"),
-                                obj.getString("gender"));
+                                obj.getString("gender"), obj.getJSONArray("").getString(""));
+                        JSONArray arr = obj.getJSONArray("rates");
+                        arr.getDouble(1)
                         students.add(s);
                     }
                     showStudent(students);
