@@ -11,6 +11,8 @@
     <string name="toolsettings">Settings</string>
     <string name="tooldashboard">Dashboard</string>
     <string name="toolcalculator">Calculator</string>
+    <string name="news_desc">News Description</string>
+    <string name="news_title">Title</string>
     <string-array name="dropcurrency">
         <item>one</item>
         <item>two</item>

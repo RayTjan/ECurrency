@@ -21,4 +21,12 @@
         app:title="@string/tooldashboard"
         app:titleTextColor="#000000" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="409dp"
+        android:layout_height="676dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="54dp"
+        tools:listitem="@layout/card_news"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
