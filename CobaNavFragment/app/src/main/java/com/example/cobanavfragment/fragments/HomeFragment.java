@@ -70,7 +70,7 @@ public class HomeFragment extends Fragment {
     public void getStudent(){
         final ArrayList<Student> students = new ArrayList<>();
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "https://nickysan.000webhostapp.com/api/list.php";
+        String url = "http://newsapi.org/v2/top-headlines?category=business&apiKey=e692335ecadf4fa881abc2d91d9d83c1";
 
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
@@ -78,14 +78,12 @@ public class HomeFragment extends Fragment {
                 try{
                     String result = new String (responseBody);
                     JSONObject responseObject = new JSONObject(result);
-                    JSONArray list =  responseObject.getJSONArray("student");
+                    JSONArray list =  responseObject.getJSONArray("articles");
                     for (int i = 0; i < list.length(); i++){
                         JSONObject obj = list.getJSONObject(i);
-                        Student s = new Student(obj.getString("id"),obj.getString("nim"),
-                                obj.getString("name"),obj.getString("email"),obj.getString("phone"),
-                                obj.getString("gender"), obj.getJSONArray("").getString(""));
-                        JSONArray arr = obj.getJSONArray("rates");
-                        arr.getDouble(1)
+                        Student s = new Student(obj.getString("author"),obj.getString("title"),
+                                obj.getString("description"),obj.getString("url"),obj.getString("content"),
+                                obj.getString("publishedAt"));
                         students.add(s);
                     }
                     showStudent(students);

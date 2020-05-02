@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void getStudent(){
         AsyncHttpClient client = new AsyncHttpClient();
-        String url = "http://data.fixer.io/api/latest?access_key=ac31820a29489ce18b9208b5c5c5d557";
+        String url = "http://newsapi.org/v2/top-headlines?category=business&apiKey=e692335ecadf4fa881abc2d91d9d83c1";
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     String result = new String (responseBody);
                     JSONObject responseObject = new JSONObject(result);
                     JSONObject rates = responseObject.getJSONObject("rates");
+                    JSONArray list =  responseObject.getJSONArray("articles");
                     Double IDR = rates.getDouble("IDR");
                     caramelas = Double.toString(IDR);
                 }catch (Exception e){
@@ -55,4 +57,44 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+//    String result = new String (responseBody);
+//    JSONObject responseObject = new JSONObject(result);
+//    JSONArray list =  responseObject.getJSONArray("student");
+//                    for (int i = 0; i < list.length(); i++){
+//        JSONObject obj = list.getJSONObject(i);
+//        Student s = new Student(obj.getString("id"),obj.getString("nim"),
+//                obj.getString("name"),obj.getString("email"),obj.getString("phone"),
+//                obj.getString("gender"), obj.getJSONArray("").getString(""));
+//        JSONArray arr = obj.getJSONArray("rates");
+//        arr.getDouble(1)
+//        students.add(s);
+//    }
+
+
+//    showStudent(students);
+//    public void getStudent(){
+//        AsyncHttpClient client = new AsyncHttpClient();
+//        String url = "http://data.fixer.io/api/latest?access_key=ac31820a29489ce18b9208b5c5c5d557";
+//        client.get(url, new AsyncHttpResponseHandler() {
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+//                try{
+//                    String result = new String (responseBody);
+//                    JSONObject responseObject = new JSONObject(result);
+//                    JSONObject rates = responseObject.getJSONObject("rates");
+//                    Double IDR = rates.getDouble("IDR");
+//                    caramelas = Double.toString(IDR);
+//                }catch (Exception e){
+//                    Log.d("ExceptionStudent", "onSuccess: " + e.getMessage());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+//
+//            }
+//        });
+//    }
 }
