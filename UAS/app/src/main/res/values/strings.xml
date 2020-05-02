@@ -20,4 +20,21 @@
         <item>four</item>
         <item>five</item>
     </string-array>
+    <string-array name="currency">
+        <item>IDR</item>
+        <item>USD</item>
+        <item>AUD</item>
+        <item>JPY</item>
+        <item>RUB</item>
+        <item>HKD</item>
+        <item>CNY</item>
+        <item>AED</item>
+        <item>EUR</item>
+        <item>CZK</item>
+        <item>DKK</item>
+        <item>SEK</item>
+        <item>PLN</item>
+        <item>TRY</item>
+        <item>UAH</item>
+    </string-array>
 </resources>

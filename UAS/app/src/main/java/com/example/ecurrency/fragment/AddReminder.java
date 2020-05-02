@@ -1,24 +1,18 @@
 package com.example.ecurrency.fragment;
 
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.example.ecurrency.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -29,7 +23,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ReminderFragment extends Fragment{
+public class AddReminder extends Fragment {
 
 
 //    public void saveArray(ArrayList<items> array){
@@ -53,8 +47,9 @@ public class ReminderFragment extends Fragment{
 //        return itemlist;
 //    }
 
-    public ReminderFragment() {
+    public AddReminder() {
         // Required empty public constructor
+
     }
 
 
@@ -62,21 +57,7 @@ public class ReminderFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        FloatingActionButton toAdd;
-        View view = inflater.inflate(R.layout.fragment_calculator, container, false);
-        toAdd = (FloatingActionButton) view.findViewById(R.id.floatingActionButton3) ;
-        toAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new AddReminder();
-                loadFragment(fragment);
-            }
-        });
-        return inflater.inflate(R.layout.fragment_reminder, container, false);
+        return inflater.inflate(R.layout.activity_add_reminder, container, false);
     }
-    private void loadFragment(Fragment fragment){
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.main_frame, fragment);
-        transaction.commit();
-    }
+
 }
