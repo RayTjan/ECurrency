@@ -60,66 +60,20 @@ public class CalculatorFragment extends Fragment implements AdapterView.OnItemSe
         resultCal = view.findViewById(R.id.calOutput) ;
         inputCal = view.findViewById(R.id.calInput);
         convert = view.findViewById(R.id.convert);
-//        resultCal.setText(indonesia);
         spinner1 = view.findViewById(R.id.reminder_spinner_currency);
-//        spinner1.setOnItemSelectedListener(CalculatorFragment.this);
-        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                resultDouble= (Double.parseDouble(inputCal.getEditText().getText().toString()) /getRatio(spinner1.getSelectedItem().toString()))*getRatio(spinner2.getSelectedItem().toString());
-                resultCal.setText(Double.toString(resultDouble));
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        inputCal.getEditText().addTextChangedListener(inputcheck);
+       spinner1.setOnItemSelectedListener(CalculatorFragment.this);
         spinner2 = view.findViewById(R.id.spinner2);
-//        spinner1.setOnItemSelectedListener(CalculatorFragment.this);
-        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-//                resultDouble= (Double.parseDouble(inputCal.getEditText().getText().toString()) /getRatio(spinner1.getSelectedItem().toString()))*getRatio(spinner2.getSelectedItem().toString());
-//                resultCal.setText(Double.toString(resultDouble));
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+        spinner2.setOnItemSelectedListener(CalculatorFragment.this);
         convert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                resultDouble= (Double.parseDouble(inputCal.getEditText().getText().toString()) /getRatio(spinner1.getSelectedItem().toString()))*getRatio(spinner2.getSelectedItem().toString());
-//                resultCal.setText(Double.toString(resultDouble));
+                resultDouble= (Double.parseDouble(inputCal.getEditText().getText().toString()) /getRatio(spinner1.getSelectedItem().toString()))*getRatio(spinner2.getSelectedItem().toString());
+                resultCal.setText(Double.toString(resultDouble));
             }
         });
 
     }
-    TextWatcher inputcheck = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-//            resultDouble= (Double.parseDouble(inputCal.getEditText().getText().toString()) /getRatio(spinner1.getSelectedItem().toString()))*getRatio(spinner2.getSelectedItem().toString());
-//            resultCal.setText(Double.toString(resultDouble));
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-        }
-    };
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
