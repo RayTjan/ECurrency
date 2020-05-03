@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (!itemlist.isEmpty()){
                 itemlist1.setItemlist(itemlist);
             }
+
             Unew.putExtra(AddActivity.transfer,itemlist1);
             startActivity(Unew);
             finish();

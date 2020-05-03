@@ -18,7 +18,7 @@
         >
 
         <ImageView
-            android:id="@+id/newsimg"
+            android:id="@+id/reminder_card_img"
             android:layout_width="95dp"
             android:layout_height="95dp"
             android:layout_marginStart="300dp"
@@ -39,7 +39,7 @@
             android:textColor="#000000"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/newsimg"
+            app:layout_constraintEnd_toStartOf="@+id/reminder_card_img"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -51,7 +51,7 @@
             android:layout_marginTop="8dp"
             android:text="TextView"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/newsimg"
+            app:layout_constraintEnd_toStartOf="@+id/reminder_card_img"
             app:layout_constraintHorizontal_bias="0.173"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title" />

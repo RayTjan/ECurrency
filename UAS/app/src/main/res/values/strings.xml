@@ -13,12 +13,9 @@
     <string name="toolcalculator">Calculator</string>
     <string name="news_desc">News Description</string>
     <string name="news_title">Title</string>
-    <string-array name="dropcurrency">
-        <item>one</item>
-        <item>two</item>
-        <item>three</item>
-        <item>four</item>
-        <item>five</item>
+    <string-array name="mole">
+        <item>more than</item>
+        <item>less than</item>
     </string-array>
     <string-array name="currency">
         <item>IDR</item>

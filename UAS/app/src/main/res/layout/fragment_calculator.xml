@@ -22,7 +22,7 @@
         app:titleTextColor="#000000" />
 
     <Spinner
-        android:id="@+id/spinner1"
+        android:id="@+id/reminder_spinner_currency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner1">
+        app:layout_constraintTop_toBottomOf="@+id/reminder_spinner_currency">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

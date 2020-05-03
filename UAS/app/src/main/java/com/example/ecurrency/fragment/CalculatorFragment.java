@@ -14,15 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ecurrency.MainActivity;
 import com.example.ecurrency.R;
-import com.example.ecurrency.SplashScreenActivity;
 import com.google.android.material.textfield.TextInputLayout;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -36,7 +33,7 @@ import cz.msebera.android.httpclient.Header;
  * A simple {@link Fragment} subclass.
  */
 public class CalculatorFragment extends Fragment implements AdapterView.OnItemSelectedListener {
-    String indonesia, america, australia, japanese, russia, hongkong, chinese, arabic, euro, czech, danish, sweden, poland, turkish, ukrainian;
+    Double indonesia, america, australia, japanese, russia, hongkong, chinese, arabic, euro, czech, danish, sweden, poland, turkish, ukrainian;
     TextView resultCal;
     TextInputLayout inputCal;
     Spinner spinner1,spinner2;
@@ -63,37 +60,12 @@ public class CalculatorFragment extends Fragment implements AdapterView.OnItemSe
         resultCal = view.findViewById(R.id.calOutput) ;
         inputCal = view.findViewById(R.id.calInput);
         convert = view.findViewById(R.id.convert);
-        convert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("WORKING!!!");
-                resultDouble= (Double.parseDouble(inputCal.getEditText().getText().toString()) /getRatio(spinner1.getSelectedItem().toString()))*getRatio(spinner2.getSelectedItem().toString());
-                resultCal.setText(Double.toString(resultDouble));
-            }
-        });
-        spinner1 = view.findViewById(R.id.spinner1);
+//        resultCal.setText(indonesia);
+        spinner1 = view.findViewById(R.id.reminder_spinner_currency);
 //        spinner1.setOnItemSelectedListener(CalculatorFragment.this);
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println("WORKING!!!");
-
-                resultDouble= (Double.parseDouble(inputCal.getEditText().getText().toString()) /getRatio(spinner1.getSelectedItem().toString()))*getRatio(spinner2.getSelectedItem().toString());
-                resultCal.setText(Double.toString(resultDouble));
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        spinner2 = view.findViewById(R.id.spinner2);
-//        spinner1.setOnItemSelectedListener(CalculatorFragment.this);
-        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println("WORKING!!!");
 
                 resultDouble= (Double.parseDouble(inputCal.getEditText().getText().toString()) /getRatio(spinner1.getSelectedItem().toString()))*getRatio(spinner2.getSelectedItem().toString());
                 resultCal.setText(Double.toString(resultDouble));
@@ -106,7 +78,29 @@ public class CalculatorFragment extends Fragment implements AdapterView.OnItemSe
             }
         });
         inputCal.getEditText().addTextChangedListener(inputcheck);
+        spinner2 = view.findViewById(R.id.spinner2);
+//        spinner1.setOnItemSelectedListener(CalculatorFragment.this);
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+//                resultDouble= (Double.parseDouble(inputCal.getEditText().getText().toString()) /getRatio(spinner1.getSelectedItem().toString()))*getRatio(spinner2.getSelectedItem().toString());
+//                resultCal.setText(Double.toString(resultDouble));
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        convert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                resultDouble= (Double.parseDouble(inputCal.getEditText().getText().toString()) /getRatio(spinner1.getSelectedItem().toString()))*getRatio(spinner2.getSelectedItem().toString());
+//                resultCal.setText(Double.toString(resultDouble));
+            }
+        });
 
     }
     TextWatcher inputcheck = new TextWatcher() {
@@ -117,8 +111,8 @@ public class CalculatorFragment extends Fragment implements AdapterView.OnItemSe
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            resultDouble= (Double.parseDouble(inputCal.getEditText().getText().toString()) /getRatio(spinner1.getSelectedItem().toString()))*getRatio(spinner2.getSelectedItem().toString());
-            resultCal.setText(Double.toString(resultDouble));
+//            resultDouble= (Double.parseDouble(inputCal.getEditText().getText().toString()) /getRatio(spinner1.getSelectedItem().toString()))*getRatio(spinner2.getSelectedItem().toString());
+//            resultCal.setText(Double.toString(resultDouble));
         }
 
         @Override
@@ -139,55 +133,72 @@ public class CalculatorFragment extends Fragment implements AdapterView.OnItemSe
     }
 
     public double getRatio( String currency){
-
+        getCurrency();
         if (currency.equalsIgnoreCase("IDR")){
-            return Double.parseDouble(indonesia);
+//            return Double.parseDouble(indonesia);
+            return indonesia;
         }
         else if (currency.equalsIgnoreCase("USD")){
-            return Double.parseDouble(america);
+//            return Double.parseDouble(america);
+            return america;
         }
         else if (currency.equalsIgnoreCase("AUD")){
-            return Double.parseDouble(australia);
+//            return Double.parseDouble(australia);
+            return australia;
+
         }
         else if (currency.equalsIgnoreCase("JPY")){
-            return Double.parseDouble(japanese);
+//            return Double.parseDouble(japanese);
+            return japanese;
 
         }
         else if (currency.equalsIgnoreCase("RUB")){
-            return Double.parseDouble(russia);
+//            return Double.parseDouble(russia);
+            return russia;
 
         }
         else if (currency.equalsIgnoreCase("HKD")){
-            return Double.parseDouble(hongkong);
+//            return Double.parseDouble(hongkong);
+            return hongkong;
 
         }
         else if (currency.equalsIgnoreCase("CNY")){
-            return Double.parseDouble(chinese);
+//            return Double.parseDouble(chinese);
+            return chinese;
 
         }else if (currency.equalsIgnoreCase("AED")){
-            return Double.parseDouble(arabic);
+//            return Double.parseDouble(arabic);
+            return arabic;
 
         }else if (currency.equalsIgnoreCase("EUR")){
-            return Double.parseDouble(euro);
+//            return Double.parseDouble(euro);
+            return euro;
 
         }
         else if (currency.equalsIgnoreCase("CZK")){
-            return Double.parseDouble(czech);
+//            return Double.parseDouble(czech);
+            return czech;
+
 
         }else if (currency.equalsIgnoreCase("DKK")){
-            return Double.parseDouble(danish);
+//            return Double.parseDouble(danish);
+            return danish;
 
         }else if (currency.equalsIgnoreCase("SEK")){
-            return Double.parseDouble(sweden);
+//            return Double.parseDouble(sweden);
+            return sweden;
 
         }else if (currency.equalsIgnoreCase("PLN")){
-            return Double.parseDouble(poland);
+//            return Double.parseDouble(poland);
+            return poland;
 
         }else if (currency.equalsIgnoreCase("TRY")){
-            return Double.parseDouble(turkish);
+//            return Double.parseDouble(turkish);
+            return turkish;
 
         }        else{
-            return Double.parseDouble(ukrainian);
+//            return Double.parseDouble(ukrainian);
+            return ukrainian;
 
         }
 
@@ -220,21 +231,37 @@ public class CalculatorFragment extends Fragment implements AdapterView.OnItemSe
                     Double TRY = rates.getDouble("TRY");
                     Double UAH = rates.getDouble("UAH");
 
-                    indonesia = Double.toString(IDR);
-                    america = Double.toString(USD);
-                    australia = Double.toString(AUD);
-                    japanese = Double.toString(JPY);
-                    russia = Double.toString(RUB);
-                    hongkong = Double.toString(HKD);
-                    chinese = Double.toString(CNY);
-                    arabic = Double.toString(AED);
-                    euro = Double.toString(EUR);
-                    czech = Double.toString(CZK);
-                    danish = Double.toString(DKK);
-                    sweden = Double.toString(SEK);
-                    poland = Double.toString(PLN);
-                    turkish = Double.toString(TRY);
-                    ukrainian = Double.toString(UAH);
+//                    indonesia = Double.toString(IDR);
+//                    america = Double.toString(USD);
+//                    australia = Double.toString(AUD);
+//                    japanese = Double.toString(JPY);
+//                    russia = Double.toString(RUB);
+//                    hongkong = Double.toString(HKD);
+//                    chinese = Double.toString(CNY);
+//                    arabic = Double.toString(AED);
+//                    euro = Double.toString(EUR);
+//                    czech = Double.toString(CZK);
+//                    danish = Double.toString(DKK);
+//                    sweden = Double.toString(SEK);
+//                    poland = Double.toString(PLN);
+//                    turkish = Double.toString(TRY);
+//                    ukrainian = Double.toString(UAH);
+
+                    indonesia = IDR;
+                    america = USD;
+                    australia = AUD;
+                    japanese = JPY;
+                    russia = RUB;
+                    hongkong = HKD;
+                    chinese = CNY;
+                    arabic = AED;
+                    euro = EUR;
+                    czech = CZK;
+                    danish = DKK;
+                    sweden = SEK;
+                    poland = PLN;
+                    turkish = TRY;
+                    ukrainian = UAH;
 
                 }catch (Exception e){
                     Log.d("ExceptionStudent", "onSuccess: " + e.getMessage());
