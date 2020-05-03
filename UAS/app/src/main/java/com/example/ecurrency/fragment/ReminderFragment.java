@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -56,27 +58,36 @@ public class ReminderFragment extends Fragment{
     public ReminderFragment() {
         // Required empty public constructor
     }
+    FloatingActionButton toAdd;
 
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            // Inflate the layout for this fragment
+            View view = inflater.inflate(R.layout.fragment_calculator, container, false);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        FloatingActionButton toAdd;
-        View view = inflater.inflate(R.layout.fragment_calculator, container, false);
-        toAdd = (FloatingActionButton) view.findViewById(R.id.floatingActionButton3) ;
-        toAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new AddReminder();
-                loadFragment(fragment);
-            }
-        });
-        return inflater.inflate(R.layout.fragment_reminder, container, false);
-    }
+            return inflater.inflate(R.layout.fragment_reminder, container, false);
+        }
     private void loadFragment(Fragment fragment){
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.main_frame, fragment);
         transaction.commit();
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        toAdd = view.findViewById(R.id.floatingActionButton3) ;
+        toAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Fragment fragment = new AddReminder();
+//                loadFragment(fragment);
+                Fragment fragment = new AddReminder();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.main_frame, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
     }
 }

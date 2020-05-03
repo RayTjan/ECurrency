@@ -3,6 +3,8 @@ package com.example.ecurrency.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -49,11 +51,18 @@ public class CalculatorFragment extends Fragment implements AdapterView.OnItemSe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_calculator, container, false);
+        return inflater.inflate(R.layout.fragment_calculator, container, false);
+    }
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+//        View view = inflater.inflate(R.layout.fragment_calculator, container, false);
         getCurrency();
-        resultCal = (TextView)view.findViewById(R.id.calOutput) ;
-        inputCal = (TextInputLayout)view.findViewById(R.id.calInput);
-        convert = (Button)view.findViewById(R.id.convert);
+        resultCal = view.findViewById(R.id.calOutput) ;
+        inputCal = view.findViewById(R.id.calInput);
+        convert = view.findViewById(R.id.convert);
         convert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +71,7 @@ public class CalculatorFragment extends Fragment implements AdapterView.OnItemSe
                 resultCal.setText(Double.toString(resultDouble));
             }
         });
-        spinner1 = (Spinner)view.findViewById(R.id.spinner1);
+        spinner1 = view.findViewById(R.id.spinner1);
 //        spinner1.setOnItemSelectedListener(CalculatorFragment.this);
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -70,7 +79,7 @@ public class CalculatorFragment extends Fragment implements AdapterView.OnItemSe
                 System.out.println("WORKING!!!");
 
                 resultDouble= (Double.parseDouble(inputCal.getEditText().getText().toString()) /getRatio(spinner1.getSelectedItem().toString()))*getRatio(spinner2.getSelectedItem().toString());
-                    resultCal.setText(Double.toString(resultDouble));
+                resultCal.setText(Double.toString(resultDouble));
 
             }
 
@@ -79,7 +88,7 @@ public class CalculatorFragment extends Fragment implements AdapterView.OnItemSe
 
             }
         });
-        spinner2 = (Spinner)view.findViewById(R.id.spinner2);
+        spinner2 = view.findViewById(R.id.spinner2);
 //        spinner1.setOnItemSelectedListener(CalculatorFragment.this);
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -99,7 +108,6 @@ public class CalculatorFragment extends Fragment implements AdapterView.OnItemSe
         inputCal.getEditText().addTextChangedListener(inputcheck);
 
 
-        return inflater.inflate(R.layout.fragment_calculator, container, false);
     }
     TextWatcher inputcheck = new TextWatcher() {
         @Override
@@ -119,7 +127,6 @@ public class CalculatorFragment extends Fragment implements AdapterView.OnItemSe
         }
     };
 
-
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
@@ -131,9 +138,6 @@ public class CalculatorFragment extends Fragment implements AdapterView.OnItemSe
 
     }
 
-    public void calculate(){
-
-    }
     public double getRatio( String currency){
 
         if (currency.equalsIgnoreCase("IDR")){
