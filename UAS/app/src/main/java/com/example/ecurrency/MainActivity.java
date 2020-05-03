@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                         setFragment(SettingsFragment);
                         return;
                     default:
-                        setFragment(GraphFragment);
+                        setFragment(DashboardFragment);
                         return;
                 }
             }

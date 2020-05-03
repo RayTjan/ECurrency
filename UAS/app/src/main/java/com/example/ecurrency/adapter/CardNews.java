@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,7 +41,7 @@ public class CardNews extends RecyclerView.Adapter<CardNews.NewsViewHolder>{
         News news = listNews.get(position);
         holder.title.setText(news.getTitle());
         holder.description.setText(news.getDescription());
-        holder.newsimg.setText(news.getNewsimg());
+//        holder.newsimg.setText(news.getNewsimg());
     }
 
     @Override
@@ -49,13 +50,14 @@ public class CardNews extends RecyclerView.Adapter<CardNews.NewsViewHolder>{
     }
 
     public class NewsViewHolder extends RecyclerView.ViewHolder {
-        TextView title, description, newsimg;
+        TextView title, description;
+        ImageView newsimg;
 
         public NewsViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
             description = itemView.findViewById(R.id.description);
-            newsimg = itemView.findViewById(R.id.newsimg);
+//            newsimg = itemView.findViewById(R.id.newsimg);
         }
     }
 }
