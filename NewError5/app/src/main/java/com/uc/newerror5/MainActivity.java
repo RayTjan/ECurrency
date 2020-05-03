@@ -11,7 +11,10 @@ import android.widget.TextView;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -55,4 +58,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+//    public void getnotin(){
+//        final ArrayList<Student> students = new ArrayList<>();
+//        AsyncHttpClient client = new AsyncHttpClient();
+//        String url = "http://newsapi.org/v2/top-headlines?category=business&apiKey=e692335ecadf4fa881abc2d91d9d83c1";
+//
+//        client.get(url, new AsyncHttpResponseHandler() {
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+//                try{
+//                    String result = new String (responseBody);
+//                    JSONObject responseObject = new JSONObject(result);
+//                    JSONArray list =  responseObject.getJSONArray("articles");
+//                    for (int i = 0; i < list.length(); i++){
+//                        JSONObject obj = list.getJSONObject(i);
+//                        Student s = new Student(obj.getString("author"),obj.getString("title"),
+//                                obj.getString("description"),obj.getString("url"),obj.getString("content"),
+//                                obj.getString("publishedAt"));
+//                        students.add(s);
+//                    }
+//                    showStudent(students);
+//                }catch (Exception e){
+//                    Log.d("ExceptionStudent", "onSuccess: " + e.getMessage());
+//                }
+//            }
 }
