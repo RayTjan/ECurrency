@@ -57,7 +57,11 @@ public class CardNews extends RecyclerView.Adapter<CardNews.NewsViewHolder>{
             super(itemView);
             title = itemView.findViewById(R.id.title);
             description = itemView.findViewById(R.id.description);
+<<<<<<< HEAD
 //            newsimg = itemView.findViewById(R.id.newsimg);
+=======
+            newsimg = itemView.findViewById(R.id.reminder_card_img);
+>>>>>>> 678eba9f776fec0fcaa2e1d5da322f340eeae0a5
         }
     }
 }

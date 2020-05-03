@@ -25,8 +25,11 @@
         android:id="@+id/rv_news"
         android:layout_width="409dp"
         android:layout_height="676dp"
+<<<<<<< HEAD
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+=======
+>>>>>>> 678eba9f776fec0fcaa2e1d5da322f340eeae0a5
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tooladd"
         tools:listitem="@layout/card_news" />
