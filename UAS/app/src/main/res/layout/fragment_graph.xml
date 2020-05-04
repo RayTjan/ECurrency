@@ -21,5 +21,12 @@
         app:title="@string/toolgraph"
         app:titleTextColor="#000000" />
 
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/over_graph"
+        android:layout_width="match_parent"
+        android:layout_height="218dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tooladd" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

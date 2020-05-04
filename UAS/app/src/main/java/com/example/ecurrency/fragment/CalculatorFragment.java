@@ -61,7 +61,7 @@ public class CalculatorFragment extends Fragment implements AdapterView.OnItemSe
         inputCal = view.findViewById(R.id.calInput);
         convert = view.findViewById(R.id.convert);
         spinner1 = view.findViewById(R.id.reminder_spinner_currency);
-       spinner1.setOnItemSelectedListener(CalculatorFragment.this);
+        spinner1.setOnItemSelectedListener(CalculatorFragment.this);
         spinner2 = view.findViewById(R.id.spinner2);
         spinner2.setOnItemSelectedListener(CalculatorFragment.this);
         convert.setOnClickListener(new View.OnClickListener() {
@@ -153,7 +153,6 @@ public class CalculatorFragment extends Fragment implements AdapterView.OnItemSe
         }        else{
 //            return Double.parseDouble(ukrainian);
             return ukrainian;
-
         }
 
         }
