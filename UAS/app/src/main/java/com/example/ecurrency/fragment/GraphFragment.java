@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.ecurrency.R;
+import com.example.ecurrency.adapter.CardGraph;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -45,6 +47,8 @@ public class GraphFragment extends Fragment {
         // Required empty public constructor
     }
 
+    private RecyclerView rvGraph;
+    private CardGraph cardGraph;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -106,6 +110,10 @@ public class GraphFragment extends Fragment {
         lineDataSet.setFormLineWidth(1f);
         //background color
         lineChart.setBackgroundColor(Color.BLUE);
+
+        rvGraph = view.findViewById(R.id.rv_graph);
+        cardGraph = new CardGraph(getContext());
+
     }
     private ArrayList<Entry> ChartData(){
         ArrayList<Entry> dataSet = new ArrayList<>();

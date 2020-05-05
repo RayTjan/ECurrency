@@ -23,14 +23,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_news"
-        android:layout_width="408dp"
-        android:layout_height="598dp"
+        android:layout_width="411dp"
+        android:layout_height="680dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tooladd"
-        app:layout_constraintVertical_bias="0.406" />
+        app:layout_constraintTop_toBottomOf="@+id/tooladd"
+        app:layout_constraintVertical_bias="0.0" />
 
     =======
 >>>>>>> 678eba9f776fec0fcaa2e1d5da322f340eeae0a5

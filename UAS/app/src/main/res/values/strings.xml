@@ -13,6 +13,10 @@
     <string name="toolcalculator">Calculator</string>
     <string name="news_desc">News Description</string>
     <string name="news_title">Title</string>
+    <string name="name_state" />
+    <string name="nameState">State</string>
+    <string name="currency">Currency</string>
+    <string name="value">Value</string>
     <string-array name="mole">
         <item>more than</item>
         <item>less than</item>

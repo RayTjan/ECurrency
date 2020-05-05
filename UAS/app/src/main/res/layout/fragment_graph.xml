@@ -23,10 +23,39 @@
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/over_graph"
-        android:layout_width="match_parent"
-        android:layout_height="218dp"
+        android:layout_width="412dp"
+        android:layout_height="355dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tooladd" />
+        app:layout_constraintTop_toBottomOf="@+id/tooladd">
+
+    </com.github.mikephil.charting.charts.LineChart>
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="392dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="11dp"
+        app:layout_constraintBottom_toTopOf="@+id/rv_graph"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/over_graph"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/buttonin_calc" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_graph"
+        android:layout_width="0dp"
+        android:layout_height="307dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/over_graph"
+        app:layout_constraintVertical_bias="1.0"
+        tools:listitem="@layout/card_graph" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,7 +1,6 @@
 package com.example.ecurrency.fragment;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,18 +13,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.ecurrency.R;
 import com.example.ecurrency.adapter.CardNews;
-import com.example.ecurrency.adapter.News;
+import com.example.ecurrency.model.News;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.security.PrivateKey;
 import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;

@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecurrency.R;
+import com.example.ecurrency.model.News;
 
 import java.util.ArrayList;
 
