@@ -18,9 +18,11 @@ import android.widget.TextView;
 
 import com.example.ecurrency.R;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -30,6 +32,8 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -54,7 +58,28 @@ public class GraphFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //xaxis
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.TOP_INSIDE);
+        xAxis.setTextSize(10f);
+        xAxis.setTextColor(Color.WHITE);
+        xAxis.setDrawAxisLine(false);
+        xAxis.setDrawGridLines(true);
+        xAxis.setTextColor(Color.rgb(255, 192, 56));
+        xAxis.setCenterAxisLabels(true);
+        xAxis.setGranularity(1f); // one hour
+        xAxis.setValueFormatter(new ValueFormatter() {
 
+            private final SimpleDateFormat mFormat = new SimpleDateFormat("dd MMM HH:mm", Locale.ENGLISH);
+
+            @Override
+            public String getFormattedValue(float value) {
+
+                long millis = TimeUnit.HOURS.toMillis((long) value);
+                return mFormat.format(new Date(millis));
+            }
+        });
+        //xaxis
         urlPres = "http://data.fixer.io/api/latest?access_key=ac31820a29489ce18b9208b5c5c5d557";
         getCurrency(urlPres);
         lineChart = view.findViewById(R.id.over_graph);
