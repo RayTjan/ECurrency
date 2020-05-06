@@ -68,9 +68,17 @@
         android:id="@+id/calInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="input"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reminder_spinner_currency">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="330dp"
+            android:layout_height="53dp"
+            android:hint="input value"
+            android:inputType="number"
+            android:text="0"
+            android:textSize="24sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -94,18 +102,6 @@
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calOutput" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:layout_width="330dp"
-        android:layout_height="53dp"
-        android:hint="input value"
-        android:inputType="number"
-        android:text="0"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reminder_spinner_currency" />
 
     <Spinner
         android:id="@+id/reminder_spinner_currency"
