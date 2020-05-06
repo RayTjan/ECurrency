@@ -8,17 +8,23 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ecurrency.R;
+import com.example.ecurrency.activities.DetailActivity;
 import com.example.ecurrency.adapter.CardGraph;
+import com.example.ecurrency.model.Graph;
+import com.example.ecurrency.utils.ItemClickSupport;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -29,6 +35,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
@@ -113,8 +120,56 @@ public class GraphFragment extends Fragment {
 
         rvGraph = view.findViewById(R.id.rv_graph);
         cardGraph = new CardGraph(getContext());
-
+        getGraph();
     }
+
+    private void getGraph() {
+        final ArrayList<Graph> graph = new ArrayList<>();
+        AsyncHttpClient client = new AsyncHttpClient();
+        String url = "http://data.fixer.io/api/latest?access_key=ac31820a29489ce18b9208b5c5c5d557";
+
+        client.get(url, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                try{
+                    String result = new String (responseBody);
+                    JSONObject responseObject = new JSONObject(result);
+                    JSONArray list = responseObject.getJSONArray("rates");
+
+                    for(int i = 0; i < list.length(); i++){
+                        JSONObject obj = list.getJSONObject(i);
+                        Graph g = new Graph(obj.getString("state"), obj.getString("currency"), obj.getString("value"));
+                        graph.add(g);
+                    }
+                    showGraph(graph);
+                }catch (Exception e){
+                    Log.d("ExceptionGraph", "onSuccess: " + e.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                Log.d("OnFailureGraph", "onFailure" + error.getMessage());
+            }
+        });
+    }
+
+    private void showGraph(final ArrayList<Graph> graph) {
+        rvGraph.setLayoutManager(new LinearLayoutManager(getActivity()));
+        CardGraph cardGraph = new CardGraph(getContext());
+        cardGraph.setListGraph(graph);
+        rvGraph.setAdapter(cardGraph);
+        ItemClickSupport.addTo(rvGraph).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                Intent intent = new Intent(getActivity(), DetailActivity.class);
+                intent.putExtra(DetailActivity.EXTRA_STUDENT, (Parcelable) graph.get(position));
+                startActivity(intent);
+                Toast.makeText(getContext(), graph.get(position).getState(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private ArrayList<Entry> ChartData(){
         ArrayList<Entry> dataSet = new ArrayList<>();
         dataSet.add(new Entry(0, Integer.parseInt(indonesia)));
