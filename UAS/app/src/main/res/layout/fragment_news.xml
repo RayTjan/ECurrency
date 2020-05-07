@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_news"
+        android:layout_width="411dp"
+        android:layout_height="511dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView11"
+        app:layout_constraintVertical_bias="0.019" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tooladd"
         android:layout_width="418dp"
@@ -18,45 +30,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:subtitleTextColor="#000000"
-        app:title="@string/toolgraph"
+        app:title="@string/toolnews"
         app:titleTextColor="#000000" />
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/over_graph"
-        android:layout_width="410dp"
-        android:layout_height="350dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tooladd">
-
-    </com.github.mikephil.charting.charts.LineChart>
-
     <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="392dp"
+        android:id="@+id/imageView11"
+        android:layout_width="385dp"
         android:layout_height="5dp"
-        android:layout_marginTop="11dp"
-        app:layout_constraintBottom_toTopOf="@+id/rv_graph"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/over_graph"
-        app:layout_constraintVertical_bias="0.52"
+        app:layout_constraintTop_toBottomOf="@+id/tooladd"
         app:srcCompat="@drawable/buttonin_calc" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_graph"
-        android:layout_width="411dp"
-        android:layout_height="218dp"
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="385dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/over_graph"
-        app:layout_constraintVertical_bias="0.533"
-        tools:listitem="@layout/card_graph" />
+        app:layout_constraintTop_toBottomOf="@+id/rv_news"
+        app:layout_constraintVertical_bias="0.169"
+        app:srcCompat="@drawable/buttonin_calc" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

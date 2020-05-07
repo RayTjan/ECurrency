@@ -16,7 +16,7 @@ import com.example.ecurrency.R;
 import com.example.ecurrency.fragment.CalculatorFragment;
 import com.example.ecurrency.fragment.DashboardFragment;
 import com.example.ecurrency.fragment.GraphFragment;
-import com.example.ecurrency.fragment.ReminderFragment;
+import com.example.ecurrency.fragment.NewsFragment;
 import com.example.ecurrency.fragment.SettingsFragment;
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
@@ -25,7 +25,7 @@ import com.luseen.spacenavigation.SpaceOnClickListener;
 public class MainActivity extends AppCompatActivity {
 
     private GraphFragment GraphFragment;
-    private ReminderFragment ReminderFragment;
+    private NewsFragment NewsFragment;
     private DashboardFragment DashboardFragment;
     private CalculatorFragment CalculatorFragment;
     private SettingsFragment SettingsFragment;
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         GraphFragment = new GraphFragment();
-        ReminderFragment = new ReminderFragment();
+        NewsFragment = new NewsFragment();
         DashboardFragment = new DashboardFragment();
         CalculatorFragment = new CalculatorFragment();
         SettingsFragment = new SettingsFragment();
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView.showIconOnly();
 
         navigationView.addSpaceItem(new SpaceItem("nav_graph", R.drawable.line_chart));
-        navigationView.addSpaceItem(new SpaceItem("nav_reminder", R.drawable.bell));
+        navigationView.addSpaceItem(new SpaceItem("nav_reminder", R.drawable.job));
         navigationView.addSpaceItem(new SpaceItem("nav_calculator", R.drawable.calculator));
         navigationView.addSpaceItem(new SpaceItem("nav_settings", R.drawable.ic_settings_black_24dp));
 //        navigationView.changeCurrentItem(DashboardFragment);
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                         setFragment(GraphFragment);
                         return;
                     case 1:
-                        setFragment(ReminderFragment);
+                        setFragment(NewsFragment);
                         return;
                     case 2:
                         setFragment(CalculatorFragment);

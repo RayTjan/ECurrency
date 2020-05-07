@@ -126,7 +126,7 @@ public class GraphFragment extends Fragment {
         LineData lineData = new LineData(iLineDataSets);
         lineChart.setData(lineData);
         lineChart.invalidate();
-        lineDataSet.enableDashedLine(10f, 5f, 0f);
+//        lineDataSet.enableDashedLine(10f, 5f, 0f);
         lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
         lineDataSet.setColor(Color.DKGRAY);
         lineDataSet.setCircleColor(Color.DKGRAY);
@@ -137,7 +137,7 @@ public class GraphFragment extends Fragment {
         lineDataSet.setDrawFilled(true);
         lineDataSet.setFormLineWidth(1f);
         //background color
-        lineChart.setBackgroundColor(Color.YELLOW);
+        lineChart.setBackgroundColor(Color.WHITE);
     }
     private void getGraph() {
         final ArrayList<Graph> graph = new ArrayList<>();

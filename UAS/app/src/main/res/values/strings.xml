@@ -17,6 +17,7 @@
     <string name="nameState">State</string>
     <string name="currency">Currency</string>
     <string name="value">Value</string>
+    <string name="toolnews">News</string>
     <string-array name="mole">
         <item>more than</item>
         <item>less than</item>
