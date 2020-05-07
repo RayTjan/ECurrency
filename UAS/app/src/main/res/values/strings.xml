@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">eCurrency</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="buttonadduser">Set</string>
+    <string name="toolreminder">Reminder</string>
+    <string name="inpput_fname">Name</string>
+    <string name="input_value">Value</string>
+    <string name="toolgraph">Graph</string>
+    <string name="toolsettings">Settings</string>
+    <string name="tooldashboard">Dashboard</string>
+    <string name="toolcalculator">Calculator</string>
+    <string name="news_desc">News Description</string>
+    <string name="news_title">Title</string>
+    <string name="name_state" />
+    <string name="nameState">State</string>
+    <string name="currency">Currency</string>
+    <string name="value">Value</string>
+    <string-array name="mole">
+        <item>more than</item>
+        <item>less than</item>
+    </string-array>
+    <string-array name="currency">
+        <item>IDR</item>
+        <item>USD</item>
+        <item>AUD</item>
+        <item>JPY</item>
+        <item>RUB</item>
+        <item>HKD</item>
+        <item>CNY</item>
+        <item>AED</item>
+        <item>EUR</item>
+        <item>CZK</item>
+        <item>DKK</item>
+        <item>SEK</item>
+        <item>PLN</item>
+        <item>TRY</item>
+        <item>UAH</item>
+    </string-array>
+</resources>
