@@ -29,7 +29,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     private class LogoLauncher extends Thread{
         public void run(){
             try{
-                sleep(5000 * SLEEP_TIMER);
+                sleep(2000 * SLEEP_TIMER);
             }catch(InterruptedException e){
                 e.printStackTrace();
             }

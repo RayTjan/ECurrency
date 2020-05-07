@@ -41,6 +41,7 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -65,6 +66,11 @@ public class GraphFragment extends Fragment {
     }
 
     String indonesia, america, australia, japanese, russia, hongkong, chinese, arabic, euro, czech, danish, sweden, poland, turkish, ukrainian;
+
+
+    ArrayList<String> cnames  = new ArrayList<>();
+    ArrayList<String> cMon  = new ArrayList<>();
+    ArrayList<String> cCur  = new ArrayList<>();
     LineChart lineChart;
     String urlPres,urlMin ,today,days;
     Double IDR;
@@ -93,6 +99,7 @@ public class GraphFragment extends Fragment {
 //            }
 //        });
         //xaxis
+        getCurrency("http://data.fixer.io/api/latest?access_key=ac31820a29489ce18b9208b5c5c5d557");
          lineChart = view.findViewById(R.id.over_graph);
         ChartData();
         rvGraph = view.findViewById(R.id.rv_graph);
@@ -134,34 +141,57 @@ public class GraphFragment extends Fragment {
     }
     private void getGraph() {
         final ArrayList<Graph> graph = new ArrayList<>();
-        AsyncHttpClient client = new AsyncHttpClient();
-        String url = "http://data.fixer.io/api/latest?access_key=ac31820a29489ce18b9208b5c5c5d557";
-        client.get(url, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                try{
-                    String result = new String (responseBody);
-                    JSONObject responseObject = new JSONObject(result);
-                    JSONArray list = responseObject.getJSONArray("rates");
-                    JSONObject rates = responseObject.getJSONObject("rates");
+        cnames.add("indonesia");
+        cnames.add("america");
+        cnames.add("australia");
+        cnames.add("japanese");
+        cnames.add("russia");
+        cnames.add("hongkong");
+        cnames.add("chinese");
+        cnames.add("arabic");
+        cnames.add("euro");
+        cnames.add("czech");
+        cnames.add("danish");
+        cnames.add("sweden");
+        cnames.add("poland");
+        cnames.add("turkish");
+        cnames.add("ukrainian");
+        cCur.add(indonesia);
+        cCur.add(america);
+        cCur.add(australia);
+        cCur.add(japanese);
+        cCur.add(russia);
+        cCur.add(hongkong);
+        cCur.add(chinese);
+        cCur.add(arabic);
+        cCur.add(euro);
+        cCur.add(czech);
+        cCur.add(danish);
+        cCur.add(sweden);
+        cCur.add(poland);
+        cCur.add(turkish);
+        cCur.add(ukrainian);
+        cMon.add("IDR");
+        cMon.add("USD");
+        cMon.add("AUD");
+        cMon.add("JPY");
+        cMon.add("RUB");
+        cMon.add("HKD");
+        cMon.add("CNY");
+        cMon.add("AED");
+        cMon.add("EUR");
+        cMon.add("CZK");
+        cMon.add("DKK");
+        cMon.add("SEK");
+        cMon.add("PLN");
+        cMon.add("TRY");
+        cMon.add("UAH");
 
-                    for(int i = 0; i < list.length(); i++){
-                        JSONObject obj = list.getJSONObject(i);
-                        Double curr = rates.getDouble( obj.getString("rates"));
-                        Graph g = new Graph(obj.getString("rates"), obj.getString("currency"), curr.toString());
-                        graph.add(g);
-                    }
-                    showGraph(graph);
-                }catch (Exception e){
-                    Log.d("ExceptionGraph", "onSuccess: " + e.getMessage());
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Log.d("OnFailureGraph", "onFailure" + error.getMessage());
-            }
-        });
+        for(int i = 0; i < cnames.size(); i++){
+            Graph g = new Graph(cnames.get(i),cMon.get(i),cCur.get(i));
+            graph.add(g);
+        }
+        showGraph(graph);
     }
 
     private void showGraph(final ArrayList<Graph> graph) {
@@ -169,15 +199,16 @@ public class GraphFragment extends Fragment {
         CardGraph cardGraph = new CardGraph(getContext());
         cardGraph.setListGraph(graph);
         rvGraph.setAdapter(cardGraph);
-        ItemClickSupport.addTo(rvGraph).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
-            @Override
-            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                Intent intent = new Intent(getActivity(), DetailActivity.class);
-                intent.putExtra(DetailActivity.EXTRA_STUDENT, (Parcelable) graph.get(position));
-                startActivity(intent);
-                Toast.makeText(getContext(), graph.get(position).getState(), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        ItemClickSupport.addTo(rvGraph).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+//            @Override
+//            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+//                Intent intent = new Intent(getActivity(), DetailActivity.class);
+//                intent.putExtra(DetailActivity.EXTRA_STUDENT, (Parcelable) graph.get(position));
+//                startActivity(intent);
+//                Toast.makeText(getContext(), graph.get(position).getState(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
     }
 
 
