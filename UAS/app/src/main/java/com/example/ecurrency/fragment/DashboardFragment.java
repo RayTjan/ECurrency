@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 
 import com.example.ecurrency.R;
 import com.example.ecurrency.adapter.CardNews;
-import com.example.ecurrency.adapter.CurrencyArray;
+import com.example.ecurrency.adapter.idrArray;
 import com.example.ecurrency.model.News;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
@@ -62,7 +62,7 @@ public class DashboardFragment extends Fragment {
     private void ChartData(){
         ArrayList<Entry> dataSet = new ArrayList<>();
         for (int a=0;a<=5;a++){
-            float fill =  CurrencyArray.IDRarray.get(a).floatValue();
+            float fill =  idrArray.IDRarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
         showChart(dataSet);

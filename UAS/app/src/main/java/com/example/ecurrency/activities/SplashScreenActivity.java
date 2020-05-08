@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.ecurrency.R;
-import com.example.ecurrency.adapter.CurrencyArray;
+import com.example.ecurrency.adapter.idrArray;
 import com.example.ecurrency.fragment.GraphFragment;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -21,7 +21,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_splash_screen);
 
-        CurrencyArray.SetIDRFirst();
+        idrArray.SetIDRFirst();
         LogoLauncher logoLauncher = new LogoLauncher();
         logoLauncher.start();
 

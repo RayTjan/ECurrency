@@ -1,6 +1,7 @@
 package com.example.ecurrency.fragment;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -10,26 +11,40 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ecurrency.R;
+import com.example.ecurrency.activities.DetailActivity;
 import com.example.ecurrency.adapter.CardGraph;
-import com.example.ecurrency.adapter.CurrencyArray;
+import com.example.ecurrency.adapter.idrArray;
 import com.example.ecurrency.model.Graph;
+import com.example.ecurrency.utils.ItemClickSupport;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -95,7 +110,7 @@ public class GraphFragment extends Fragment {
     private void ChartData(){
         ArrayList<Entry> dataSet = new ArrayList<>();
         for (int a=0;a<=5;a++){
-            float fill =  CurrencyArray.IDRarray.get(a).floatValue();
+            float fill =  idrArray.IDRarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
         showChart(dataSet);
@@ -174,7 +189,6 @@ public class GraphFragment extends Fragment {
 
         for(int i = 0; i < cnames.size(); i++){
             Graph g = new Graph(cnames.get(i),cMon.get(i),cCur.get(i));
-            Log.println(Log.INFO,"DATA RECYCERVIEW",cnames.get(i));
             graph.add(g);
         }
         showGraph(graph);

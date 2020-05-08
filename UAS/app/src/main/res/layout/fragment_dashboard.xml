@@ -8,11 +8,10 @@
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/dash_graph"
-        android:layout_width="412dp"
-        android:layout_height="348dp"
-        android:layout_marginTop="308dp"
+        android:layout_width="365dp"
+        android:layout_height="303dp"
+        android:layout_marginTop="356dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.024"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tooladd">
 
@@ -71,7 +70,18 @@
         app:layout_constraintTop_toBottomOf="@+id/tooladd"
         app:layout_constraintVertical_bias="0.00999999">
 
-    </androidx.recyclerview.widget.RecyclerView><![CDATA[
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="395dp"
+        android:layout_height="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/dash_graph"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView13"
+        app:layout_constraintVertical_bias="0.45"
+        app:srcCompat="@drawable/buttonin_calc" /><![CDATA[
 
     =======
 >>>>>>> 678eba9f776fec0fcaa2e1d5da322f340eeae0a5
