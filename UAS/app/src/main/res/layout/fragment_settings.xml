@@ -18,33 +18,107 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:subtitleTextColor="#000000"
-        app:title="@string/toolsettings"
+        app:title="@string/toolinfo"
         app:titleTextColor="#000000" />
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="402dp"
-        android:layout_height="104dp"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="141dp"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="677dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tooladd"
-        app:srcCompat="@drawable/button_calc" />
+        app:layout_constraintVertical_bias="0.0">
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="402dp"
-        android:layout_height="104dp"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="141dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9"
-        app:srcCompat="@drawable/button_calc" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="388dp"
+                android:layout_height="294dp"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/imageView10"
+                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/button_calc" />
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="130dp"
+                android:layout_height="132dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/app" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="362dp"
+                android:layout_height="259dp"
+                android:layout_marginTop="8dp"
+                android:text="eCurrency is the app for people to view real-time data of the currency exchange rate, it has various features fitted for a normal person to become an experienced trader in just a few minutes. Aside from your basic use of showing the ascent/ descent of currency values,  it has an internal calculator with an updated ratio to convert between currencies, and reminders the user can set when a currency reaches a certain value. Giving all the necessary tools for you and your friends to be a trader anytime and anywhere."
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView9"
+                app:layout_constraintStart_toStartOf="@+id/imageView9"
+                app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="What is eCurrency?"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textView4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:text="What's our Specialty?"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="375dp"
+                android:layout_height="171dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11"
+                app:srcCompat="@drawable/button_calc" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="0dp"
+                android:layout_height="270dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="Well, this app isn't just like the ordinary Currency app, eCurrency is something more. We built this app for an International Business stuff, but you can actually use this app on your daily basis. This app contains Currency Graph, Currency Calculator, even news about business related."
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView14"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView14"
+                app:layout_constraintTop_toTopOf="@+id/imageView14" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

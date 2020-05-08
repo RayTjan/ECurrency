@@ -74,20 +74,63 @@ public class DashboardFragment extends Fragment {
         LineDataSet PLNLine = ChartDataPLN();
         LineDataSet TRYLine = ChartDataTRY();
         LineDataSet UAHLine = ChartDataUAH();
+
         iLineDataSets.add(USDLine);
-        iLineDataSets.add(AUDLine);
+        USDLine.setColor(Color.GREEN);
+        USDLine.setCircleColor(Color.GREEN);
+
+        iLineDataSets.add(AUDLine); //AUD
+        AUDLine.setColor(Color.BLUE);
+        AUDLine.setCircleColor(Color.BLUE);
+
         iLineDataSets.add(JPYLine);
+        JPYLine.setColor(Color.LTGRAY);
+        JPYLine.setCircleColor(Color.LTGRAY);
+
         iLineDataSets.add(RUBLine);
+        AUDLine.setColor(Color.YELLOW);
+        AUDLine.setCircleColor(Color.YELLOW);
+
         iLineDataSets.add(HKDLine);
+        HKDLine.setColor(Color.CYAN);
+        HKDLine.setCircleColor(Color.CYAN);
+
         iLineDataSets.add(CNYLine);
+        CNYLine.setColor(Color.RED);
+        CNYLine.setCircleColor(Color.RED);
+
         iLineDataSets.add(AEDLine);
+        AEDLine.setColor(Color.DKGRAY);
+        AEDLine.setCircleColor(Color.DKGRAY);
+
         iLineDataSets.add(EURLine);
+        AUDLine.setColor(Color.rgb(0, 10, 90));
+        AUDLine.setCircleColor(Color.rgb(0, 10, 90));
+
         iLineDataSets.add(CZKLine);
+        AUDLine.setColor(Color.rgb(10, 50, 20));
+        AUDLine.setCircleColor(Color.rgb(10, 50, 20));
+
         iLineDataSets.add(DKKLine);
+        AUDLine.setColor(Color.rgb(60, 40, 80));
+        AUDLine.setCircleColor(Color.rgb(60, 40, 80));
+
         iLineDataSets.add(SEKLine);
+        AUDLine.setColor(Color.rgb(90, 90, 10));
+        AUDLine.setCircleColor(Color.rgb(90, 90, 10));
+
         iLineDataSets.add(PLNLine);
+        AUDLine.setColor(Color.BLACK);
+        AUDLine.setCircleColor(Color.BLACK);
+
         iLineDataSets.add(TRYLine);
+        AUDLine.setColor(Color.rgb(50, 50, 50));
+        AUDLine.setCircleColor(Color.rgb(50, 50, 50));
+
         iLineDataSets.add(UAHLine);
+        AUDLine.setColor(Color.rgb(0, 10, 10));
+        AUDLine.setCircleColor(Color.rgb(0, 10, 10));
+
         setLineChart();
         getNews();
     }

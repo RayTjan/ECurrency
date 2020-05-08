@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView.addSpaceItem(new SpaceItem("nav_graph", R.drawable.line_chart));
         navigationView.addSpaceItem(new SpaceItem("nav_reminder", R.drawable.job));
         navigationView.addSpaceItem(new SpaceItem("nav_calculator", R.drawable.calculator));
-        navigationView.addSpaceItem(new SpaceItem("nav_settings", R.drawable.ic_settings_black_24dp));
+        navigationView.addSpaceItem(new SpaceItem("nav_settings", R.drawable.info));
 //        navigationView.changeCurrentItem(DashboardFragment);
 
         navigationView.setSpaceOnClickListener(new SpaceOnClickListener() {

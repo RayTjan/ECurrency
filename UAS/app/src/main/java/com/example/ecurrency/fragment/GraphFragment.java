@@ -148,8 +148,6 @@ public class GraphFragment extends Fragment {
         cMon.add("UAH");
         iLineDataSets.add(IDRLine);
         //EXAMPLE OF EDITING GRAPH
-        IDRLine.enableDashedLine(10f, 5f, 0f);
-        IDRLine.enableDashedHighlightLine(10f, 5f, 0f);
         IDRLine.setColor(Color.DKGRAY);
         IDRLine.setCircleColor(Color.DKGRAY);
         IDRLine.setLineWidth(1f);
