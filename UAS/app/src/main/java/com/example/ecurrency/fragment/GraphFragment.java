@@ -19,6 +19,7 @@ import com.example.ecurrency.R;
 import com.example.ecurrency.adapter.CardGraph;
 import com.example.ecurrency.adapter.CurrencyArray;
 import com.example.ecurrency.model.Graph;
+import com.example.ecurrency.utils.ItemClickSupport;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -50,7 +51,6 @@ public class GraphFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_graph, container, false);
     }
 
-    String indonesia, america, australia, japanese, russia, hongkong, chinese, arabic, euro, czech, danish, sweden, poland, turkish, ukrainian;
 
 
     ArrayList<String> cnames  = new ArrayList<>();
@@ -63,20 +63,20 @@ public class GraphFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         LineDataSet IDRLine = ChartDataIDR();
-        LineDataSet USDLine = ChartDataUSD();
-        LineDataSet AUDLine = ChartDataAUD();
-        LineDataSet JPYLine = ChartDataJPY();
-        LineDataSet RUBLine = ChartDataRUB();
-        LineDataSet HKDLine = ChartDataHKD();
-        LineDataSet CNYLine = ChartDataCNY();
-        LineDataSet AEDLine = ChartDataAED();
-        LineDataSet EURLine = ChartDataEUR();
-        LineDataSet CZKLine = ChartDataCZK();
-        LineDataSet DKKLine = ChartDataDKK();
-        LineDataSet SEKLine = ChartDataSEK();
-        LineDataSet PLNLine = ChartDataPLN();
-        LineDataSet TRYLine = ChartDataTRY();
-        LineDataSet UAHLine = ChartDataUAH();
+//        LineDataSet USDLine = ChartDataUSD();
+//        LineDataSet AUDLine = ChartDataAUD();
+//        LineDataSet JPYLine = ChartDataJPY();
+//        LineDataSet RUBLine = ChartDataRUB();
+//        LineDataSet HKDLine = ChartDataHKD();
+//        LineDataSet CNYLine = ChartDataCNY();
+//        LineDataSet AEDLine = ChartDataAED();
+//        LineDataSet EURLine = ChartDataEUR();
+//        LineDataSet CZKLine = ChartDataCZK();
+//        LineDataSet DKKLine = ChartDataDKK();
+//        LineDataSet SEKLine = ChartDataSEK();
+//        LineDataSet PLNLine = ChartDataPLN();
+//        LineDataSet TRYLine = ChartDataTRY();
+//        LineDataSet UAHLine = ChartDataUAH();
         //xaxis
 //        XAxis xAxis = lineChart.getXAxis();
 //        xAxis.setPosition(XAxis.XAxisPosition.TOP_INSIDE);
@@ -99,41 +99,87 @@ public class GraphFragment extends Fragment {
 //            }
 //        });
         //xaxis
-        getCurrency("http://data.fixer.io/api/latest?access_key=26f7bb08aa05dfa29d72169517d9ceef");
          lineChart = view.findViewById(R.id.over_graph);
         rvGraph = view.findViewById(R.id.rv_graph);
+        cnames.add("Indonesia");
+        cnames.add("America");
+        cnames.add("Australia");
+        cnames.add("Japan");
+        cnames.add("Russia");
+        cnames.add("Hongkong");
+        cnames.add("China");
+        cnames.add("Arabic");
+        cnames.add("Europe");
+        cnames.add("Czech");
+        cnames.add("Danish");
+        cnames.add("Sweden");
+        cnames.add("Poland");
+        cnames.add("Turkey");
+        cnames.add("Ukraine");
+        cCur.add(CurrencyArray.indonesia);
+        cCur.add(CurrencyArray.america);
+        cCur.add(CurrencyArray.australia);
+        cCur.add(CurrencyArray.japanese);
+        cCur.add(CurrencyArray.russia);
+        cCur.add(CurrencyArray.hongkong);
+        cCur.add(CurrencyArray.chinese);
+        cCur.add(CurrencyArray.arabic);
+        cCur.add(CurrencyArray.euro);
+        cCur.add(CurrencyArray.czech);
+        cCur.add(CurrencyArray.danish);
+        cCur.add(CurrencyArray.sweden);
+        cCur.add(CurrencyArray.poland);
+        cCur.add(CurrencyArray.turkish);
+        cCur.add(CurrencyArray.ukrainian);
+        cMon.add("IDR");
+        cMon.add("USD");
+        cMon.add("AUD");
+        cMon.add("JPY");
+        cMon.add("RUB");
+        cMon.add("HKD");
+        cMon.add("CNY");
+        cMon.add("AED");
+        cMon.add("EUR");
+        cMon.add("CZK");
+        cMon.add("DKK");
+        cMon.add("SEK");
+        cMon.add("PLN");
+        cMon.add("TRY");
+        cMon.add("UAH");
         iLineDataSets.add(IDRLine);
-        iLineDataSets.add(USDLine);
-        iLineDataSets.add(AUDLine);
-        iLineDataSets.add(JPYLine);
-        iLineDataSets.add(RUBLine);
-        iLineDataSets.add(HKDLine);
-        iLineDataSets.add(CNYLine);
-        iLineDataSets.add(AEDLine);
-        iLineDataSets.add(EURLine);
-        iLineDataSets.add(CZKLine);
-        iLineDataSets.add(DKKLine);
-        iLineDataSets.add(SEKLine);
-        iLineDataSets.add(PLNLine);
-        iLineDataSets.add(TRYLine);
-        iLineDataSets.add(UAHLine);
+        //EXAMPLE OF EDITING GRAPH
+        IDRLine.enableDashedLine(10f, 5f, 0f);
+        IDRLine.enableDashedHighlightLine(10f, 5f, 0f);
+        IDRLine.setColor(Color.DKGRAY);
+        IDRLine.setCircleColor(Color.DKGRAY);
+        IDRLine.setLineWidth(1f);
+        IDRLine.setCircleRadius(3f);
+        IDRLine.setDrawCircleHole(false);
+        IDRLine.setValueTextSize(9f);
+        IDRLine.setDrawFilled(true);
+        IDRLine.setFormLineWidth(1f);
+//        iLineDataSets.add(USDLine);
+//        iLineDataSets.add(AUDLine);
+//        iLineDataSets.add(JPYLine);
+//        iLineDataSets.add(RUBLine);
+//        iLineDataSets.add(HKDLine);
+//        iLineDataSets.add(CNYLine);
+//        iLineDataSets.add(AEDLine);
+//        iLineDataSets.add(EURLine);
+//        iLineDataSets.add(CZKLine);
+//        iLineDataSets.add(DKKLine);
+//        iLineDataSets.add(SEKLine);
+//        iLineDataSets.add(PLNLine);
+//        iLineDataSets.add(TRYLine);
+//        iLineDataSets.add(UAHLine);
         cardGraph = new CardGraph(getContext());
         getGraph();
         setLineChart();
     }
-    //        lineDataSet.enableDashedLine(10f, 5f, 0f);
-//        lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
-//        lineDataSet.setColor(Color.DKGRAY);
-//        lineDataSet.setCircleColor(Color.DKGRAY);
-//        lineDataSet.setLineWidth(1f);
-//        lineDataSet.setCircleRadius(3f);
-//        lineDataSet.setDrawCircleHole(false);
-//        lineDataSet.setValueTextSize(9f);
-//        lineDataSet.setDrawFilled(true);
-//        lineDataSet.setFormLineWidth(1f);
+
     private LineDataSet ChartDataIDR(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.IDRarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -142,7 +188,7 @@ public class GraphFragment extends Fragment {
     }
     private LineDataSet ChartDataUSD(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.USDarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -152,7 +198,7 @@ public class GraphFragment extends Fragment {
     }
     private LineDataSet ChartDataAUD(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.AUDarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -162,7 +208,7 @@ public class GraphFragment extends Fragment {
     }
     private LineDataSet ChartDataJPY(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.JPYarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -172,7 +218,7 @@ public class GraphFragment extends Fragment {
     }
     private LineDataSet ChartDataRUB(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.RUBarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -182,7 +228,7 @@ public class GraphFragment extends Fragment {
     }
     private LineDataSet ChartDataHKD(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.HKDarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -192,7 +238,7 @@ public class GraphFragment extends Fragment {
     }
     private LineDataSet ChartDataCNY(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.CNYarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -202,7 +248,7 @@ public class GraphFragment extends Fragment {
     }
     private LineDataSet ChartDataAED(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.AEDarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -212,7 +258,7 @@ public class GraphFragment extends Fragment {
     }
     private LineDataSet ChartDataEUR(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.EURarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -222,7 +268,7 @@ public class GraphFragment extends Fragment {
     }
     private LineDataSet ChartDataCZK(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.CZKarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -232,7 +278,7 @@ public class GraphFragment extends Fragment {
     }
     private LineDataSet ChartDataDKK(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.DKKarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -242,7 +288,7 @@ public class GraphFragment extends Fragment {
     }
     private LineDataSet ChartDataSEK(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.SEKarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -252,7 +298,7 @@ public class GraphFragment extends Fragment {
     }
     private LineDataSet ChartDataPLN(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.PLNarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -262,7 +308,7 @@ public class GraphFragment extends Fragment {
     }
     private LineDataSet ChartDataTRY(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.TRYarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -272,7 +318,7 @@ public class GraphFragment extends Fragment {
     }
     private LineDataSet ChartDataUAH(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.UAHarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -295,51 +341,7 @@ public class GraphFragment extends Fragment {
     }
     private void getGraph() {
         final ArrayList<Graph> graph = new ArrayList<>();
-        cnames.add("Indonesia");
-        cnames.add("America");
-        cnames.add("Australia");
-        cnames.add("Japan");
-        cnames.add("Russia");
-        cnames.add("Hongkong");
-        cnames.add("China");
-        cnames.add("Arabic");
-        cnames.add("Europe");
-        cnames.add("Czech");
-        cnames.add("Danish");
-        cnames.add("Sweden");
-        cnames.add("Poland");
-        cnames.add("Turkey");
-        cnames.add("Ukraine");
-        cCur.add(indonesia);
-        cCur.add(america);
-        cCur.add(australia);
-        cCur.add(japanese);
-        cCur.add(russia);
-        cCur.add(hongkong);
-        cCur.add(chinese);
-        cCur.add(arabic);
-        cCur.add(euro);
-        cCur.add(czech);
-        cCur.add(danish);
-        cCur.add(sweden);
-        cCur.add(poland);
-        cCur.add(turkish);
-        cCur.add(ukrainian);
-        cMon.add("IDR");
-        cMon.add("USD");
-        cMon.add("AUD");
-        cMon.add("JPY");
-        cMon.add("RUB");
-        cMon.add("HKD");
-        cMon.add("CNY");
-        cMon.add("AED");
-        cMon.add("EUR");
-        cMon.add("CZK");
-        cMon.add("DKK");
-        cMon.add("SEK");
-        cMon.add("PLN");
-        cMon.add("TRY");
-        cMon.add("UAH");
+
 
         for(int i = 0; i < cnames.size(); i++){
             Graph g = new Graph(cnames.get(i),cMon.get(i),cCur.get(i));
@@ -354,71 +356,16 @@ public class GraphFragment extends Fragment {
         CardGraph cardGraph = new CardGraph(getContext());
         cardGraph.setListGraph(graph);
         rvGraph.setAdapter(cardGraph);
-//        ItemClickSupport.addTo(rvGraph).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
-//            @Override
-//            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-//                Intent intent = new Intent(getActivity(), DetailActivity.class);
-//                intent.putExtra(DetailActivity.EXTRA_STUDENT, (Parcelable) graph.get(position));
-//                startActivity(intent);
-//                Toast.makeText(getContext(), graph.get(position).getState(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-    }
-
-
-    public void getCurrency(String link){
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.get(link, new AsyncHttpResponseHandler() {
-
+        ItemClickSupport.addTo(rvGraph).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                try{
-                    String result = new String (responseBody);
-                    JSONObject responseObject = new JSONObject(result);
-                    JSONObject rates = responseObject.getJSONObject("rates");
-                    Double IDR = rates.getDouble("IDR");
-                    Double USD = rates.getDouble("USD");
-                    Double AUD = rates.getDouble("AUD");
-                    Double JPY = rates.getDouble("JPY");
-                    Double RUB = rates.getDouble("RUB");
-                    Double HKD = rates.getDouble("HKD");
-                    Double CNY = rates.getDouble("CNY");
-                    Double AED = rates.getDouble("AED");
-                    Double EUR = rates.getDouble("EUR");
-                    Double CZK = rates.getDouble("CZK");
-                    Double DKK = rates.getDouble("DKK");
-                    Double SEK = rates.getDouble("SEK");
-                    Double PLN = rates.getDouble("PLN");
-                    Double TRY = rates.getDouble("TRY");
-                    Double UAH = rates.getDouble("UAH");
-
-                    indonesia = String.format("%.3f", IDR);
-                    america =String.format("%.3f", USD);
-                    australia = String.format("%.3f", AUD);
-                    japanese = String.format("%.3f", JPY);
-                    russia = String.format("%.3f", RUB);
-                    hongkong = String.format("%.3f", HKD);
-                    chinese =String.format("%.3f", CNY);
-                    arabic = String.format("%.3f", AED);
-                    euro = String.format("%.3f", EUR);
-                    czech = String.format("%.3f", CZK);
-                    danish = String.format("%.3f", DKK);
-                    sweden = String.format("%.3f", SEK);
-                    poland = String.format("%.3f", PLN);
-                    turkish = String.format("%.3f", TRY);
-                    ukrainian = String.format("%.3f", UAH);
-
-                }catch (Exception e){
-                    Log.d("ExceptionStudent", "onSuccess: " + e.getMessage());
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
 
             }
         });
+
     }
+
+
+
 
 }

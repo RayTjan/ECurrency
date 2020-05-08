@@ -29,9 +29,10 @@ public class CurrencyArray {
     public static ArrayList<Double> PLNarray = new ArrayList<>();
     public static ArrayList<Double> TRYarray = new ArrayList<>();
     public static ArrayList<Double> UAHarray = new ArrayList<>();
-
-    private static Double IDR,USD,AUD,JPY,RUB,HKD,CNY,AED,EUR,CZK,DKK,SEK,PLN,TRY,UAH;
-    private static String urlPres,urlMin ,today,days;
+    public static String indonesia, america, australia, japanese, russia, hongkong, chinese, arabic, euro, czech, danish, sweden, poland, turkish, ukrainian;
+    public static int limit = 5;
+    public static Double IDR,USD,AUD,JPY,RUB,HKD,CNY,AED,EUR,CZK,DKK,SEK,PLN,TRY,UAH;
+    private static String urlPres,urlMin ,today,days,months;
 
     public ArrayList<Double> getIDRarray() {
         return IDRarray;
@@ -44,13 +45,15 @@ public class CurrencyArray {
 
         getIDR(urlPres);
         today = date();
-        for (int a=1;a<=5;a++){
+        for (int a=1;a<=CurrencyArray.limit;a++){
+            int month = Integer.parseInt(today.substring(today.length()-5,today.length()-3)) -a;
             int day = Integer.parseInt(today.substring(today.length()-2,today.length())) -a;
             String dayStr = String.valueOf(day);
             if( day<10){
                 dayStr = new StringBuffer(dayStr).insert(0,"0").toString();;
             }
             days = new StringBuffer(today).replace(today.length()-2,today.length(),dayStr).toString();
+            months = new StringBuffer(today).replace(today.length()-5,today.length()-3,dayStr).toString();
             urlMin = new StringBuffer(urlPres).replace(urlPres.length()-50,urlPres.length()-44,days).toString();
             Log.println(  Log.INFO ,"DATE IS HEREE",urlMin);
             getIDR(urlMin);
@@ -108,24 +111,58 @@ public class CurrencyArray {
             }
         });
     }
-    public static void SetUSDFirst(){
-        Log.println(Log.INFO,"STARTING TO FILL","START SETIDRFIRST");
-        urlPres = "http://data.fixer.io/api/latest?access_key=ac31820a29489ce18b9208b5c5c5d557";
+    public void getCurrency(String link){
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get(link, new AsyncHttpResponseHandler() {
 
-        getIDR(urlPres);
-        today = date();
-        for (int a=1;a<=5;a++){
-            int day = Integer.parseInt(today.substring(today.length()-2,today.length())) -a;
-            String dayStr = String.valueOf(day);
-            if( day<10){
-                dayStr = new StringBuffer(dayStr).insert(0,"0").toString();;
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                try{
+                    String result = new String (responseBody);
+                    JSONObject responseObject = new JSONObject(result);
+                    JSONObject rates = responseObject.getJSONObject("rates");
+                    Double IDR = rates.getDouble("IDR");
+                    Double USD = rates.getDouble("USD");
+                    Double AUD = rates.getDouble("AUD");
+                    Double JPY = rates.getDouble("JPY");
+                    Double RUB = rates.getDouble("RUB");
+                    Double HKD = rates.getDouble("HKD");
+                    Double CNY = rates.getDouble("CNY");
+                    Double AED = rates.getDouble("AED");
+                    Double EUR = rates.getDouble("EUR");
+                    Double CZK = rates.getDouble("CZK");
+                    Double DKK = rates.getDouble("DKK");
+                    Double SEK = rates.getDouble("SEK");
+                    Double PLN = rates.getDouble("PLN");
+                    Double TRY = rates.getDouble("TRY");
+                    Double UAH = rates.getDouble("UAH");
+
+                    indonesia = String.format("%.3f", IDR);
+                    america =String.format("%.3f", USD);
+                    australia = String.format("%.3f", AUD);
+                    japanese = String.format("%.3f", JPY);
+                    russia = String.format("%.3f", RUB);
+                    hongkong = String.format("%.3f", HKD);
+                    chinese =String.format("%.3f", CNY);
+                    arabic = String.format("%.3f", AED);
+                    euro = String.format("%.3f", EUR);
+                    czech = String.format("%.3f", CZK);
+                    danish = String.format("%.3f", DKK);
+                    sweden = String.format("%.3f", SEK);
+                    poland = String.format("%.3f", PLN);
+                    turkish = String.format("%.3f", TRY);
+                    ukrainian = String.format("%.3f", UAH);
+
+                }catch (Exception e){
+                    Log.d("ExceptionStudent", "onSuccess: " + e.getMessage());
+                }
             }
-            days = new StringBuffer(today).replace(today.length()-2,today.length(),dayStr).toString();
-            urlMin = new StringBuffer(urlPres).replace(urlPres.length()-50,urlPres.length()-44,days).toString();
-            Log.println(  Log.INFO ,"DATE IS HEREE",urlMin);
-            getIDR(urlMin);
-            Log.println(Log.INFO,"ARRAY RESULT","Probablt loadnig");
-        }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
     }
     public static String date() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");

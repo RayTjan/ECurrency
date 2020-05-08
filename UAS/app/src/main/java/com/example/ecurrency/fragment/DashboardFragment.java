@@ -7,8 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,9 +14,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.example.ecurrency.R;
+import com.example.ecurrency.adapter.CardGraph;
 import com.example.ecurrency.adapter.CardNews;
 import com.example.ecurrency.adapter.CurrencyArray;
 import com.example.ecurrency.model.News;
@@ -51,56 +49,69 @@ public class DashboardFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        Button btnFragment = (Button)view.findViewById(R.id.btnToNews);
-        btnFragment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new Fragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.main_frame, new NewsFragment());
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
-
-        Button btnFragment2 = (Button)view.findViewById(R.id.btnToCalc);
-        btnFragment2.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Fragment fragment = new Fragment();
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.main_frame, new NewsFragment());
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
-        }
-        });
-        return view;
+        return inflater.inflate(R.layout.fragment_dashboard, container, false);
     }
     LineChart lineChart;
+    ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
         rvNews = view.findViewById(R.id.rv_news);
         lineChart = view.findViewById(R.id.dash_graph);
-        ChartData();
+//        LineDataSet IDRLine = ChartDataIDR();
+        LineDataSet USDLine = ChartDataUSD();
+        LineDataSet AUDLine = ChartDataAUD();
+        LineDataSet JPYLine = ChartDataJPY();
+        LineDataSet RUBLine = ChartDataRUB();
+        LineDataSet HKDLine = ChartDataHKD();
+        LineDataSet CNYLine = ChartDataCNY();
+        LineDataSet AEDLine = ChartDataAED();
+        LineDataSet EURLine = ChartDataEUR();
+        LineDataSet CZKLine = ChartDataCZK();
+        LineDataSet DKKLine = ChartDataDKK();
+        LineDataSet SEKLine = ChartDataSEK();
+        LineDataSet PLNLine = ChartDataPLN();
+        LineDataSet TRYLine = ChartDataTRY();
+        LineDataSet UAHLine = ChartDataUAH();
+        iLineDataSets.add(USDLine);
+        iLineDataSets.add(AUDLine);
+        iLineDataSets.add(JPYLine);
+        iLineDataSets.add(RUBLine);
+        iLineDataSets.add(HKDLine);
+        iLineDataSets.add(CNYLine);
+        iLineDataSets.add(AEDLine);
+        iLineDataSets.add(EURLine);
+        iLineDataSets.add(CZKLine);
+        iLineDataSets.add(DKKLine);
+        iLineDataSets.add(SEKLine);
+        iLineDataSets.add(PLNLine);
+        iLineDataSets.add(TRYLine);
+        iLineDataSets.add(UAHLine);
+        setLineChart();
         getNews();
+    }
+    private LineDataSet ChartDataIDR(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=CurrencyArray.limit;a++){
+            float fill =  CurrencyArray.IDRarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"IDR");
+        return lineDataSet;
     }
     private LineDataSet ChartDataUSD(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.USDarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
         LineDataSet lineDataSet = new LineDataSet(dataSet  ,"USD");
         return lineDataSet;
-
     }
     private LineDataSet ChartDataAUD(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.AUDarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -110,7 +121,7 @@ public class DashboardFragment extends Fragment {
     }
     private LineDataSet ChartDataJPY(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=3;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.JPYarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -120,7 +131,7 @@ public class DashboardFragment extends Fragment {
     }
     private LineDataSet ChartDataRUB(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.RUBarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -130,7 +141,7 @@ public class DashboardFragment extends Fragment {
     }
     private LineDataSet ChartDataHKD(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=CurrencyArray.limit;a++){
             float fill =  CurrencyArray.HKDarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
@@ -139,35 +150,105 @@ public class DashboardFragment extends Fragment {
 
     }
     private LineDataSet ChartDataCNY(){
-    private void ChartData(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
-            float fill =  CurrencyArray.IDRarray.get(a).floatValue();
+        for (int a=0;a<=CurrencyArray.limit;a++){
+            float fill =  CurrencyArray.CNYarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
-        showChart(dataSet);
-    }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"CNY");
+        return lineDataSet;
 
-    public void showChart(ArrayList<Entry> data){
-        LineDataSet lineDataSet = new LineDataSet(data  ,"IDR");
-//        LineDataSet lineDataSet2 = new LineDataSet(ChartData2(),"data2 set");
-        ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
-        iLineDataSets.add(lineDataSet);
+    }
+    private LineDataSet ChartDataAED(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=CurrencyArray.limit;a++){
+            float fill =  CurrencyArray.AEDarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"AED");
+        return lineDataSet;
+
+    }
+    private LineDataSet ChartDataEUR(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=CurrencyArray.limit;a++){
+            float fill =  CurrencyArray.EURarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"EUR");
+        return lineDataSet;
+
+    }
+    private LineDataSet ChartDataCZK(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=CurrencyArray.limit;a++){
+            float fill =  CurrencyArray.CZKarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"CZK");
+        return lineDataSet;
+
+    }
+    private LineDataSet ChartDataDKK(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=CurrencyArray.limit;a++){
+            float fill =  CurrencyArray.DKKarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"DKK");
+        return lineDataSet;
+
+    }
+    private LineDataSet ChartDataSEK(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=CurrencyArray.limit;a++){
+            float fill =  CurrencyArray.SEKarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"SEK");
+        return lineDataSet;
+
+    }
+    private LineDataSet ChartDataPLN(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=CurrencyArray.limit;a++){
+            float fill =  CurrencyArray.PLNarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"PLN");
+        return lineDataSet;
+
+    }
+    private LineDataSet ChartDataTRY(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=CurrencyArray.limit;a++){
+            float fill =  CurrencyArray.TRYarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"TRY");
+        return lineDataSet;
+
+    }
+    private LineDataSet ChartDataUAH(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=CurrencyArray.limit;a++){
+            float fill =  CurrencyArray.UAHarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"UAH");
+        return lineDataSet;
+
+    }
+    public void setLineChart(){
+
+//        iLineDataSets.add(lineDataSet);
+//        iLineDataSets.remove(lineDataSet);
 //        iLineDataSets.add(lineDataSet2);
 
         LineData lineData = new LineData(iLineDataSets);
         lineChart.setData(lineData);
         lineChart.invalidate();
-//        lineDataSet.enableDashedLine(10f, 5f, 0f);
-        lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
-        lineDataSet.setColor(Color.DKGRAY);
-        lineDataSet.setCircleColor(Color.DKGRAY);
-        lineDataSet.setLineWidth(1f);
-        lineDataSet.setCircleRadius(3f);
-        lineDataSet.setDrawCircleHole(false);
-        lineDataSet.setValueTextSize(9f);
-        lineDataSet.setDrawFilled(true);
-        lineDataSet.setFormLineWidth(1f);
+
         //background color
         lineChart.setBackgroundColor(Color.WHITE);
     }

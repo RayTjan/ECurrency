@@ -53,8 +53,6 @@ public class MainActivity extends AppCompatActivity {
         navigationView.addSpaceItem(new SpaceItem("nav_settings", R.drawable.ic_settings_black_24dp));
 //        navigationView.changeCurrentItem(DashboardFragment);
 
-
-
         navigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
             @Override
             public void onCentreButtonClick() {
