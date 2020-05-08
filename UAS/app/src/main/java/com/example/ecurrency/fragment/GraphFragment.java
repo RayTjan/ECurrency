@@ -59,7 +59,7 @@ public class GraphFragment extends Fragment {
     LineChart lineChart;
     String urlPres,urlMin ,today,days;
     Double IDR;
-
+    ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //xaxis
@@ -86,32 +86,36 @@ public class GraphFragment extends Fragment {
         //xaxis
         getCurrency("http://data.fixer.io/api/latest?access_key=26f7bb08aa05dfa29d72169517d9ceef");
          lineChart = view.findViewById(R.id.over_graph);
-        ChartData();
+        ChartDataIDR();
+        ChartDataUSD();
+        ChartDataAUD();
+        ChartDataJPY();
+        ChartDataRUB();
+        ChartDataHKD();
+        ChartDataCNY();
+        ChartDataAED();
+        ChartDataEUR();
+        ChartDataCZK();
+        ChartDataDKK();
+        ChartDataSEK();
+        ChartDataPLN();
+        ChartDataTRY();
+        ChartDataUAH();
         rvGraph = view.findViewById(R.id.rv_graph);
         cardGraph = new CardGraph(getContext());
         getGraph();
+
     }
 
-    private void ChartData(){
+    private void ChartDataIDR(){
         ArrayList<Entry> dataSet = new ArrayList<>();
         for (int a=0;a<=5;a++){
             float fill =  CurrencyArray.IDRarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
-        showChart(dataSet);
-    }
-
-    public void showChart(ArrayList<Entry> data){
-        LineDataSet lineDataSet = new LineDataSet(data  ,"IDR");
-//        LineDataSet lineDataSet2 = new LineDataSet(ChartData2(),"data2 set");
-        ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"IDR");
         iLineDataSets.add(lineDataSet);
-//        iLineDataSets.add(lineDataSet2);
-
-        LineData lineData = new LineData(iLineDataSets);
-        lineChart.setData(lineData);
-        lineChart.invalidate();
-//        lineDataSet.enableDashedLine(10f, 5f, 0f);
+        //        lineDataSet.enableDashedLine(10f, 5f, 0f);
         lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
         lineDataSet.setColor(Color.DKGRAY);
         lineDataSet.setCircleColor(Color.DKGRAY);
@@ -121,6 +125,283 @@ public class GraphFragment extends Fragment {
         lineDataSet.setValueTextSize(9f);
         lineDataSet.setDrawFilled(true);
         lineDataSet.setFormLineWidth(1f);
+    }
+    private void ChartDataUSD(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=5;a++){
+            float fill =  CurrencyArray.USDarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"USD");
+        iLineDataSets.add(lineDataSet);
+        //        lineDataSet.enableDashedLine(10f, 5f, 0f);
+        lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
+        lineDataSet.setColor(Color.DKGRAY);
+        lineDataSet.setCircleColor(Color.DKGRAY);
+        lineDataSet.setLineWidth(1f);
+        lineDataSet.setCircleRadius(3f);
+        lineDataSet.setDrawCircleHole(false);
+        lineDataSet.setValueTextSize(9f);
+        lineDataSet.setDrawFilled(true);
+        lineDataSet.setFormLineWidth(1f);
+    }
+    private void ChartDataAUD(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=5;a++){
+            float fill =  CurrencyArray.AUDarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"AUD");
+        iLineDataSets.add(lineDataSet);
+        //        lineDataSet.enableDashedLine(10f, 5f, 0f);
+        lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
+        lineDataSet.setColor(Color.DKGRAY);
+        lineDataSet.setCircleColor(Color.DKGRAY);
+        lineDataSet.setLineWidth(1f);
+        lineDataSet.setCircleRadius(3f);
+        lineDataSet.setDrawCircleHole(false);
+        lineDataSet.setValueTextSize(9f);
+        lineDataSet.setDrawFilled(true);
+        lineDataSet.setFormLineWidth(1f);
+    }
+    private void ChartDataJPY(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=5;a++){
+            float fill =  CurrencyArray.JPYarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"JPY");
+        iLineDataSets.add(lineDataSet);
+        //        lineDataSet.enableDashedLine(10f, 5f, 0f);
+        lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
+        lineDataSet.setColor(Color.DKGRAY);
+        lineDataSet.setCircleColor(Color.DKGRAY);
+        lineDataSet.setLineWidth(1f);
+        lineDataSet.setCircleRadius(3f);
+        lineDataSet.setDrawCircleHole(false);
+        lineDataSet.setValueTextSize(9f);
+        lineDataSet.setDrawFilled(true);
+        lineDataSet.setFormLineWidth(1f);
+    }
+    private void ChartDataRUB(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=5;a++){
+            float fill =  CurrencyArray.RUBarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"RUB");
+        iLineDataSets.add(lineDataSet);
+        //        lineDataSet.enableDashedLine(10f, 5f, 0f);
+        lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
+        lineDataSet.setColor(Color.DKGRAY);
+        lineDataSet.setCircleColor(Color.DKGRAY);
+        lineDataSet.setLineWidth(1f);
+        lineDataSet.setCircleRadius(3f);
+        lineDataSet.setDrawCircleHole(false);
+        lineDataSet.setValueTextSize(9f);
+        lineDataSet.setDrawFilled(true);
+        lineDataSet.setFormLineWidth(1f);
+    }
+    private void ChartDataHKD(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=5;a++){
+            float fill =  CurrencyArray.HKDarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"HKD");
+        iLineDataSets.add(lineDataSet);
+        //        lineDataSet.enableDashedLine(10f, 5f, 0f);
+        lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
+        lineDataSet.setColor(Color.DKGRAY);
+        lineDataSet.setCircleColor(Color.DKGRAY);
+        lineDataSet.setLineWidth(1f);
+        lineDataSet.setCircleRadius(3f);
+        lineDataSet.setDrawCircleHole(false);
+        lineDataSet.setValueTextSize(9f);
+        lineDataSet.setDrawFilled(true);
+        lineDataSet.setFormLineWidth(1f);
+    }
+    private void ChartDataCNY(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=5;a++){
+            float fill =  CurrencyArray.CNYarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"CNY");
+        iLineDataSets.add(lineDataSet);
+        //        lineDataSet.enableDashedLine(10f, 5f, 0f);
+        lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
+        lineDataSet.setColor(Color.DKGRAY);
+        lineDataSet.setCircleColor(Color.DKGRAY);
+        lineDataSet.setLineWidth(1f);
+        lineDataSet.setCircleRadius(3f);
+        lineDataSet.setDrawCircleHole(false);
+        lineDataSet.setValueTextSize(9f);
+        lineDataSet.setDrawFilled(true);
+        lineDataSet.setFormLineWidth(1f);
+    }
+    private void ChartDataAED(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=5;a++){
+            float fill =  CurrencyArray.AEDarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"AED");
+        iLineDataSets.add(lineDataSet);
+        //        lineDataSet.enableDashedLine(10f, 5f, 0f);
+        lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
+        lineDataSet.setColor(Color.DKGRAY);
+        lineDataSet.setCircleColor(Color.DKGRAY);
+        lineDataSet.setLineWidth(1f);
+        lineDataSet.setCircleRadius(3f);
+        lineDataSet.setDrawCircleHole(false);
+        lineDataSet.setValueTextSize(9f);
+        lineDataSet.setDrawFilled(true);
+        lineDataSet.setFormLineWidth(1f);
+    }
+    private void ChartDataEUR(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=5;a++){
+            float fill =  CurrencyArray.EURarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"EUR");
+        iLineDataSets.add(lineDataSet);
+        //        lineDataSet.enableDashedLine(10f, 5f, 0f);
+        lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
+        lineDataSet.setColor(Color.DKGRAY);
+        lineDataSet.setCircleColor(Color.DKGRAY);
+        lineDataSet.setLineWidth(1f);
+        lineDataSet.setCircleRadius(3f);
+        lineDataSet.setDrawCircleHole(false);
+        lineDataSet.setValueTextSize(9f);
+        lineDataSet.setDrawFilled(true);
+        lineDataSet.setFormLineWidth(1f);
+    }
+    private void ChartDataCZK(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=5;a++){
+            float fill =  CurrencyArray.CZKarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"CZK");
+        iLineDataSets.add(lineDataSet);
+        //        lineDataSet.enableDashedLine(10f, 5f, 0f);
+        lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
+        lineDataSet.setColor(Color.DKGRAY);
+        lineDataSet.setCircleColor(Color.DKGRAY);
+        lineDataSet.setLineWidth(1f);
+        lineDataSet.setCircleRadius(3f);
+        lineDataSet.setDrawCircleHole(false);
+        lineDataSet.setValueTextSize(9f);
+        lineDataSet.setDrawFilled(true);
+        lineDataSet.setFormLineWidth(1f);
+    }
+    private void ChartDataDKK(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=5;a++){
+            float fill =  CurrencyArray.DKKarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"DKK");
+        iLineDataSets.add(lineDataSet);
+        //        lineDataSet.enableDashedLine(10f, 5f, 0f);
+        lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
+        lineDataSet.setColor(Color.DKGRAY);
+        lineDataSet.setCircleColor(Color.DKGRAY);
+        lineDataSet.setLineWidth(1f);
+        lineDataSet.setCircleRadius(3f);
+        lineDataSet.setDrawCircleHole(false);
+        lineDataSet.setValueTextSize(9f);
+        lineDataSet.setDrawFilled(true);
+        lineDataSet.setFormLineWidth(1f);
+    }
+    private void ChartDataSEK(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=5;a++){
+            float fill =  CurrencyArray.SEKarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"SEK");
+        iLineDataSets.add(lineDataSet);
+        //        lineDataSet.enableDashedLine(10f, 5f, 0f);
+        lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
+        lineDataSet.setColor(Color.DKGRAY);
+        lineDataSet.setCircleColor(Color.DKGRAY);
+        lineDataSet.setLineWidth(1f);
+        lineDataSet.setCircleRadius(3f);
+        lineDataSet.setDrawCircleHole(false);
+        lineDataSet.setValueTextSize(9f);
+        lineDataSet.setDrawFilled(true);
+        lineDataSet.setFormLineWidth(1f);
+    }
+    private void ChartDataPLN(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=5;a++){
+            float fill =  CurrencyArray.PLNarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"PLN");
+        iLineDataSets.add(lineDataSet);
+        //        lineDataSet.enableDashedLine(10f, 5f, 0f);
+        lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
+        lineDataSet.setColor(Color.DKGRAY);
+        lineDataSet.setCircleColor(Color.DKGRAY);
+        lineDataSet.setLineWidth(1f);
+        lineDataSet.setCircleRadius(3f);
+        lineDataSet.setDrawCircleHole(false);
+        lineDataSet.setValueTextSize(9f);
+        lineDataSet.setDrawFilled(true);
+        lineDataSet.setFormLineWidth(1f);
+    }
+    private void ChartDataTRY(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=5;a++){
+            float fill =  CurrencyArray.TRYarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"TRY");
+        iLineDataSets.add(lineDataSet);
+        //        lineDataSet.enableDashedLine(10f, 5f, 0f);
+        lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
+        lineDataSet.setColor(Color.DKGRAY);
+        lineDataSet.setCircleColor(Color.DKGRAY);
+        lineDataSet.setLineWidth(1f);
+        lineDataSet.setCircleRadius(3f);
+        lineDataSet.setDrawCircleHole(false);
+        lineDataSet.setValueTextSize(9f);
+        lineDataSet.setDrawFilled(true);
+        lineDataSet.setFormLineWidth(1f);
+    }
+    private void ChartDataUAH(){
+        ArrayList<Entry> dataSet = new ArrayList<>();
+        for (int a=0;a<=5;a++){
+            float fill =  CurrencyArray.UAHarray.get(a).floatValue();
+            dataSet.add(new Entry(a,fill ));
+        }
+        LineDataSet lineDataSet = new LineDataSet(dataSet  ,"UAH");
+        iLineDataSets.add(lineDataSet);
+        //        lineDataSet.enableDashedLine(10f, 5f, 0f);
+        lineDataSet.enableDashedHighlightLine(10f, 5f, 0f);
+        lineDataSet.setColor(Color.DKGRAY);
+        lineDataSet.setCircleColor(Color.DKGRAY);
+        lineDataSet.setLineWidth(1f);
+        lineDataSet.setCircleRadius(3f);
+        lineDataSet.setDrawCircleHole(false);
+        lineDataSet.setValueTextSize(9f);
+        lineDataSet.setDrawFilled(true);
+        lineDataSet.setFormLineWidth(1f);
+    }
+    public void setLineIDR(){
+
+//        iLineDataSets.add(lineDataSet);
+//        iLineDataSets.remove(lineDataSet);
+//        iLineDataSets.add(lineDataSet2);
+
+        LineData lineData = new LineData(iLineDataSets);
+        lineChart.setData(lineData);
+        lineChart.invalidate();
+
         //background color
         lineChart.setBackgroundColor(Color.WHITE);
     }

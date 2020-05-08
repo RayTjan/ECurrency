@@ -68,34 +68,34 @@ public class CurrencyArray {
                     JSONObject rates = responseObject.getJSONObject("rates");
                     IDR = rates.getDouble("IDR");
                     IDRarray.add(IDR);
-//                    USD = rates.getDouble("USD");
-//                    USDarray.add(USD);
-//                    AUD = rates.getDouble("AUD");
-//                    AUDarray.add(AUD);
-//                    JPY = rates.getDouble("JPY");
-//                    JPYarray.add(JPY);
-//                    RUB = rates.getDouble("RUB");
-//                    RUBarray.add(RUB);
-//                    HKD = rates.getDouble("HKD");
-//                    HKDarray.add(HKD);
-//                    CNY = rates.getDouble("CNY");
-//                    IDRarray.add(CNY);
-//                    IDR = rates.getDouble("IDR");
-//                    IDRarray.add(IDR);
-//                    IDR = rates.getDouble("IDR");
-//                    IDRarray.add(IDR);
-//                    IDR = rates.getDouble("IDR");
-//                    IDRarray.add(IDR);
-//                    IDR = rates.getDouble("IDR");
-//                    IDRarray.add(IDR);
-//                    IDR = rates.getDouble("IDR");
-//                    IDRarray.add(IDR);
-//                    IDR = rates.getDouble("IDR");
-//                    IDRarray.add(IDR);
-//                    IDR = rates.getDouble("IDR");
-//                    IDRarray.add(IDR);
-//                    IDR = rates.getDouble("IDR");
-//                    IDRarray.add(IDR);
+                    USD = rates.getDouble("USD");
+                    USDarray.add(USD);
+                    AUD = rates.getDouble("AUD");
+                    AUDarray.add(AUD);
+                    JPY = rates.getDouble("JPY");
+                    JPYarray.add(JPY);
+                    RUB = rates.getDouble("RUB");
+                    RUBarray.add(RUB);
+                    HKD = rates.getDouble("HKD");
+                    HKDarray.add(HKD);
+                    CNY = rates.getDouble("CNY");
+                    CNYarray.add(CNY);
+                    AED = rates.getDouble("AED");
+                    AEDarray.add(AED);
+                    EUR = rates.getDouble("EUR");
+                    EURarray.add(EUR);
+                    CZK = rates.getDouble("CZK");
+                    CZKarray.add(CZK);
+                    DKK= rates.getDouble("DKK");
+                    DKKarray.add(DKK);
+                    SEK = rates.getDouble("SEK");
+                    SEKarray.add(SEK);
+                    PLN = rates.getDouble("PLN");
+                    PLNarray.add(PLN);
+                    TRY = rates.getDouble("TRY");
+                    TRYarray.add(TRY);
+                    UAH = rates.getDouble("UAH");
+                    UAHarray.add(UAH);
                     Log.println(Log.INFO,"INDONESIA SETTWOOOOO",IDR.toString());
                 }catch (Exception e){
                     Log.d("ExceptionStudent", "onSuccess: " + e.getMessage());
@@ -126,29 +126,6 @@ public class CurrencyArray {
             getIDR(urlMin);
             Log.println(Log.INFO,"ARRAY RESULT","Probablt loadnig");
         }
-    }
-    public static void getUSD(String link){
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.get(link, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                try{
-                    String result = new String (responseBody);
-                    JSONObject responseObject = new JSONObject(result);
-                    JSONObject rates = responseObject.getJSONObject("rates");
-                    USD = rates.getDouble("USD");
-                    USDarray.add(USD);
-                    Log.println(Log.INFO,"INDONESIA SETTWOOOOO",USD.toString());
-                }catch (Exception e){
-                    Log.d("ExceptionStudent", "onSuccess: " + e.getMessage());
-                } // Completed the request (either success or failure)
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Log.d("FAILED", "FAIL");
-            }
-        });
     }
     public static String date() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
