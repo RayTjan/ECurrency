@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ecurrency.R;
+import com.example.ecurrency.adapter.CurrencyArray;
 import com.google.android.material.textfield.TextInputLayout;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -33,7 +34,6 @@ import cz.msebera.android.httpclient.Header;
  * A simple {@link Fragment} subclass.
  */
 public class CalculatorFragment extends Fragment implements AdapterView.OnItemSelectedListener {
-    Double indonesia, america, australia, japanese, russia, hongkong, chinese, arabic, euro, czech, danish, sweden, poland, turkish, ukrainian;
     TextView resultCal;
     TextInputLayout inputCal;
     Spinner spinner1,spinner2;
@@ -56,7 +56,6 @@ public class CalculatorFragment extends Fragment implements AdapterView.OnItemSe
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 //        View view = inflater.inflate(R.layout.fragment_calculator, container, false);
-        getCurrency();
         resultCal = view.findViewById(R.id.calOutput) ;
         inputCal = view.findViewById(R.id.calInput);
         convert = view.findViewById(R.id.convert);
@@ -87,144 +86,56 @@ public class CalculatorFragment extends Fragment implements AdapterView.OnItemSe
     }
 
     public double getRatio( String currency){
-        getCurrency();
         if (currency.equalsIgnoreCase("IDR")){
-//            return Double.parseDouble(indonesia);
-            return indonesia;
+            return Double.parseDouble(CurrencyArray.indonesia);
         }
         else if (currency.equalsIgnoreCase("USD")){
-//            return Double.parseDouble(america);
-            return america;
+            return Double.parseDouble(CurrencyArray.america);
         }
         else if (currency.equalsIgnoreCase("AUD")){
-//            return Double.parseDouble(australia);
-            return australia;
+            return Double.parseDouble(CurrencyArray.australia);
 
         }
         else if (currency.equalsIgnoreCase("JPY")){
-//            return Double.parseDouble(japanese);
-            return japanese;
+            return Double.parseDouble(CurrencyArray.japanese);
 
         }
         else if (currency.equalsIgnoreCase("RUB")){
-//            return Double.parseDouble(russia);
-            return russia;
+            return Double.parseDouble(CurrencyArray.russia);
 
         }
         else if (currency.equalsIgnoreCase("HKD")){
-//            return Double.parseDouble(hongkong);
-            return hongkong;
+            return Double.parseDouble(CurrencyArray.hongkong);
 
         }
         else if (currency.equalsIgnoreCase("CNY")){
-//            return Double.parseDouble(chinese);
-            return chinese;
+            return Double.parseDouble(CurrencyArray.chinese);
 
         }else if (currency.equalsIgnoreCase("AED")){
-//            return Double.parseDouble(arabic);
-            return arabic;
+            return Double.parseDouble(CurrencyArray.arabic);
 
         }else if (currency.equalsIgnoreCase("EUR")){
-//            return Double.parseDouble(euro);
-            return euro;
+            return Double.parseDouble(CurrencyArray.euro);
 
         }
         else if (currency.equalsIgnoreCase("CZK")){
-//            return Double.parseDouble(czech);
-            return czech;
-
-
+            return Double.parseDouble(CurrencyArray.czech);
         }else if (currency.equalsIgnoreCase("DKK")){
-//            return Double.parseDouble(danish);
-            return danish;
+            return Double.parseDouble(CurrencyArray.danish);
 
         }else if (currency.equalsIgnoreCase("SEK")){
-//            return Double.parseDouble(sweden);
-            return sweden;
+            return Double.parseDouble(CurrencyArray.sweden);
 
         }else if (currency.equalsIgnoreCase("PLN")){
-//            return Double.parseDouble(poland);
-            return poland;
+            return Double.parseDouble(CurrencyArray.poland);
 
         }else if (currency.equalsIgnoreCase("TRY")){
-//            return Double.parseDouble(turkish);
-            return turkish;
+            return Double.parseDouble(CurrencyArray.turkish);
 
         }        else{
-//            return Double.parseDouble(ukrainian);
-            return ukrainian;
+            return Double.parseDouble(CurrencyArray.ukrainian);
         }
 
-        }
-
-    public void getCurrency(){
-        AsyncHttpClient client = new AsyncHttpClient();
-        String url = "http://data.fixer.io/api/latest?access_key=ac31820a29489ce18b9208b5c5c5d557";
-        client.get(url, new AsyncHttpResponseHandler() {
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                try{
-                    String result = new String (responseBody);
-                    JSONObject responseObject = new JSONObject(result);
-                    JSONObject rates = responseObject.getJSONObject("rates");
-                    Double IDR = rates.getDouble("IDR");
-                    Double USD = rates.getDouble("USD");
-                    Double AUD = rates.getDouble("AUD");
-                    Double JPY = rates.getDouble("JPY");
-                    Double RUB = rates.getDouble("RUB");
-                    Double HKD = rates.getDouble("HKD");
-                    Double CNY = rates.getDouble("CNY");
-                    Double AED = rates.getDouble("AED");
-                    Double EUR = rates.getDouble("EUR");
-                    Double CZK = rates.getDouble("CZK");
-                    Double DKK = rates.getDouble("DKK");
-                    Double SEK = rates.getDouble("SEK");
-                    Double PLN = rates.getDouble("PLN");
-                    Double TRY = rates.getDouble("TRY");
-                    Double UAH = rates.getDouble("UAH");
-
-//                    indonesia = Double.toString(IDR);
-//                    america = Double.toString(USD);
-//                    australia = Double.toString(AUD);
-//                    japanese = Double.toString(JPY);
-//                    russia = Double.toString(RUB);
-//                    hongkong = Double.toString(HKD);
-//                    chinese = Double.toString(CNY);
-//                    arabic = Double.toString(AED);
-//                    euro = Double.toString(EUR);
-//                    czech = Double.toString(CZK);
-//                    danish = Double.toString(DKK);
-//                    sweden = Double.toString(SEK);
-//                    poland = Double.toString(PLN);
-//                    turkish = Double.toString(TRY);
-//                    ukrainian = Double.toString(UAH);
-
-                    indonesia = IDR;
-                    america = USD;
-                    australia = AUD;
-                    japanese = JPY;
-                    russia = RUB;
-                    hongkong = HKD;
-                    chinese = CNY;
-                    arabic = AED;
-                    euro = EUR;
-                    czech = CZK;
-                    danish = DKK;
-                    sweden = SEK;
-                    poland = PLN;
-                    turkish = TRY;
-                    ukrainian = UAH;
-
-                }catch (Exception e){
-                    Log.d("ExceptionStudent", "onSuccess: " + e.getMessage());
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-            }
-        });
     }
+
 }

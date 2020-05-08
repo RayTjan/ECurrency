@@ -354,6 +354,12 @@ public class GraphFragment extends Fragment {
         CardGraph cardGraph = new CardGraph(getContext());
         cardGraph.setListGraph(graph);
         rvGraph.setAdapter(cardGraph);
+        ItemClickSupport.addTo(rvGraph).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+
+            }
+        });
 
     }
 
