@@ -112,7 +112,7 @@ public class DashboardFragment extends Fragment {
     }
     private LineDataSet ChartDataJPY(){
         ArrayList<Entry> dataSet = new ArrayList<>();
-        for (int a=0;a<=5;a++){
+        for (int a=0;a<=3;a++){
             float fill =  CurrencyArray.JPYarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
