@@ -343,7 +343,8 @@ public class GraphFragment extends Fragment {
 
         for(int i = 0; i < cnames.size(); i++){
             Graph g = new Graph(cnames.get(i),cMon.get(i),cCur.get(i));
-            Log.println(Log.INFO,"DATA RECYCERVIEW",cnames.get(i));
+
+            Log.println(Log.INFO,"DATA RECYCERVIEW",cCur.get(i));
             graph.add(g);
         }
         showGraph(graph);

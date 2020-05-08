@@ -111,7 +111,7 @@ public class CurrencyArray {
             }
         });
     }
-    public void getCurrency(String link){
+    public static void getCurrency(String link){
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(link, new AsyncHttpResponseHandler() {
 
@@ -137,21 +137,21 @@ public class CurrencyArray {
                     Double TRY = rates.getDouble("TRY");
                     Double UAH = rates.getDouble("UAH");
 
-                    indonesia = String.format("%.3f", IDR);
-                    america =String.format("%.3f", USD);
-                    australia = String.format("%.3f", AUD);
-                    japanese = String.format("%.3f", JPY);
-                    russia = String.format("%.3f", RUB);
-                    hongkong = String.format("%.3f", HKD);
-                    chinese =String.format("%.3f", CNY);
-                    arabic = String.format("%.3f", AED);
-                    euro = String.format("%.3f", EUR);
-                    czech = String.format("%.3f", CZK);
-                    danish = String.format("%.3f", DKK);
-                    sweden = String.format("%.3f", SEK);
-                    poland = String.format("%.3f", PLN);
-                    turkish = String.format("%.3f", TRY);
-                    ukrainian = String.format("%.3f", UAH);
+                    indonesia = String.format("%.2f", IDR);
+                    america =String.format("%.2f", USD);
+                    australia = String.format("%.2f", AUD);
+                    japanese = String.format("%.2f", JPY);
+                    russia = String.format("%.2f", RUB);
+                    hongkong = String.format("%.2f", HKD);
+                    chinese =String.format("%.2f", CNY);
+                    arabic = String.format("%.2f", AED);
+                    euro = String.format("%.2f", EUR);
+                    czech = String.format("%.2f", CZK);
+                    danish = String.format("%.2f", DKK);
+                    sweden = String.format("%.2f", SEK);
+                    poland = String.format("%.2f", PLN);
+                    turkish = String.format("%.2f", TRY);
+                    ukrainian = String.format("%.2f", UAH);
 
                 }catch (Exception e){
                     Log.d("ExceptionStudent", "onSuccess: " + e.getMessage());

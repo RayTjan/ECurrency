@@ -22,6 +22,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         CurrencyArray.SetIDRFirst();
+        CurrencyArray.getCurrency("http://data.fixer.io/api/latest?access_key=26f7bb08aa05dfa29d72169517d9ceef");
         LogoLauncher logoLauncher = new LogoLauncher();
         logoLauncher.start();
 
