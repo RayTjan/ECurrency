@@ -16,7 +16,21 @@ import cz.msebera.android.httpclient.Header;
 public class CurrencyArray {
     public static ArrayList<Double> IDRarray = new ArrayList<>();
     public static ArrayList<Double> USDarray = new ArrayList<>();
-    private static Double IDR,USD;
+    public static ArrayList<Double> AUDarray = new ArrayList<>();
+    public static ArrayList<Double> JPYarray = new ArrayList<>();
+    public static ArrayList<Double> RUBarray = new ArrayList<>();
+    public static ArrayList<Double> HKDarray = new ArrayList<>();
+    public static ArrayList<Double> CNYarray = new ArrayList<>();
+    public static ArrayList<Double> AEDarray = new ArrayList<>();
+    public static ArrayList<Double> EURarray = new ArrayList<>();
+    public static ArrayList<Double> CZKarray = new ArrayList<>();
+    public static ArrayList<Double> DKKarray = new ArrayList<>();
+    public static ArrayList<Double> SEKarray = new ArrayList<>();
+    public static ArrayList<Double> PLNarray = new ArrayList<>();
+    public static ArrayList<Double> TRYarray = new ArrayList<>();
+    public static ArrayList<Double> UAHarray = new ArrayList<>();
+
+    private static Double IDR,USD,AUD,JPY,RUB,HKD,CNY,AED,EUR,CZK,DKK,SEK,PLN,TRY,UAH;
     private static String urlPres,urlMin ,today,days;
 
     public ArrayList<Double> getIDRarray() {
@@ -26,7 +40,7 @@ public class CurrencyArray {
 
     public static void SetIDRFirst(){
         Log.println(Log.INFO,"STARTING TO FILL","START SETIDRFIRST");
-        urlPres = "http://data.fixer.io/api/latest?access_key=ac31820a29489ce18b9208b5c5c5d557";
+        urlPres = "http://data.fixer.io/api/latest?access_key=26f7bb08aa05dfa29d72169517d9ceef";
 
         getIDR(urlPres);
         today = date();
@@ -54,6 +68,34 @@ public class CurrencyArray {
                     JSONObject rates = responseObject.getJSONObject("rates");
                     IDR = rates.getDouble("IDR");
                     IDRarray.add(IDR);
+//                    USD = rates.getDouble("USD");
+//                    USDarray.add(USD);
+//                    AUD = rates.getDouble("AUD");
+//                    AUDarray.add(AUD);
+//                    JPY = rates.getDouble("JPY");
+//                    JPYarray.add(JPY);
+//                    RUB = rates.getDouble("RUB");
+//                    RUBarray.add(RUB);
+//                    HKD = rates.getDouble("HKD");
+//                    HKDarray.add(HKD);
+//                    CNY = rates.getDouble("CNY");
+//                    IDRarray.add(CNY);
+//                    IDR = rates.getDouble("IDR");
+//                    IDRarray.add(IDR);
+//                    IDR = rates.getDouble("IDR");
+//                    IDRarray.add(IDR);
+//                    IDR = rates.getDouble("IDR");
+//                    IDRarray.add(IDR);
+//                    IDR = rates.getDouble("IDR");
+//                    IDRarray.add(IDR);
+//                    IDR = rates.getDouble("IDR");
+//                    IDRarray.add(IDR);
+//                    IDR = rates.getDouble("IDR");
+//                    IDRarray.add(IDR);
+//                    IDR = rates.getDouble("IDR");
+//                    IDRarray.add(IDR);
+//                    IDR = rates.getDouble("IDR");
+//                    IDRarray.add(IDR);
                     Log.println(Log.INFO,"INDONESIA SETTWOOOOO",IDR.toString());
                 }catch (Exception e){
                     Log.d("ExceptionStudent", "onSuccess: " + e.getMessage());

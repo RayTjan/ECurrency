@@ -18,7 +18,6 @@
     <string name="currency">Currency</string>
     <string name="value">Value</string>
     <string name="toolnews">News</string>
-    <string name="darksettings">Dark Mode</string>
     <string-array name="mole">
         <item>more than</item>
         <item>less than</item>

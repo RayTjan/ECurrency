@@ -58,8 +58,6 @@ public class MainActivity extends AppCompatActivity {
             public void onCentreButtonClick() {
                 navigationView.setCentreButtonSelectable(true);
                 setFragment(DashboardFragment);
-
-//                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new GraphFragment()).commit();
             }
 
             @Override

@@ -75,7 +75,6 @@ public class NewsFragment extends Fragment {
                     Log.d("ExceptionStudent", "onSuccess: " + e.getMessage());
                 }
             }
-
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 Log.d("OnFailureStudent", "onFailure: " + error.getMessage());

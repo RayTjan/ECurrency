@@ -1,7 +1,6 @@
 package com.example.ecurrency.fragment;
 
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -11,40 +10,26 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ecurrency.R;
-import com.example.ecurrency.activities.DetailActivity;
 import com.example.ecurrency.adapter.CardGraph;
-import com.example.ecurrency.adapter.idrArray;
+import com.example.ecurrency.adapter.CurrencyArray;
 import com.example.ecurrency.model.Graph;
-import com.example.ecurrency.utils.ItemClickSupport;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -99,7 +84,7 @@ public class GraphFragment extends Fragment {
 //            }
 //        });
         //xaxis
-        getCurrency("http://data.fixer.io/api/latest?access_key=ac31820a29489ce18b9208b5c5c5d557");
+        getCurrency("http://data.fixer.io/api/latest?access_key=26f7bb08aa05dfa29d72169517d9ceef");
          lineChart = view.findViewById(R.id.over_graph);
         ChartData();
         rvGraph = view.findViewById(R.id.rv_graph);
@@ -110,7 +95,7 @@ public class GraphFragment extends Fragment {
     private void ChartData(){
         ArrayList<Entry> dataSet = new ArrayList<>();
         for (int a=0;a<=5;a++){
-            float fill =  idrArray.IDRarray.get(a).floatValue();
+            float fill =  CurrencyArray.IDRarray.get(a).floatValue();
             dataSet.add(new Entry(a,fill ));
         }
         showChart(dataSet);
@@ -141,21 +126,21 @@ public class GraphFragment extends Fragment {
     }
     private void getGraph() {
         final ArrayList<Graph> graph = new ArrayList<>();
-        cnames.add("indonesia");
-        cnames.add("america");
-        cnames.add("australia");
-        cnames.add("japanese");
-        cnames.add("russia");
-        cnames.add("hongkong");
-        cnames.add("chinese");
-        cnames.add("arabic");
-        cnames.add("euro");
-        cnames.add("czech");
-        cnames.add("danish");
-        cnames.add("sweden");
-        cnames.add("poland");
-        cnames.add("turkish");
-        cnames.add("ukrainian");
+        cnames.add("Indonesia");
+        cnames.add("America");
+        cnames.add("Australia");
+        cnames.add("Japan");
+        cnames.add("Russia");
+        cnames.add("Hongkong");
+        cnames.add("China");
+        cnames.add("Arabic");
+        cnames.add("Europe");
+        cnames.add("Czech");
+        cnames.add("Danish");
+        cnames.add("Sweden");
+        cnames.add("Poland");
+        cnames.add("Turkey");
+        cnames.add("Ukraine");
         cCur.add(indonesia);
         cCur.add(america);
         cCur.add(australia);
@@ -189,6 +174,7 @@ public class GraphFragment extends Fragment {
 
         for(int i = 0; i < cnames.size(); i++){
             Graph g = new Graph(cnames.get(i),cMon.get(i),cCur.get(i));
+            Log.println(Log.INFO,"DATA RECYCERVIEW",cnames.get(i));
             graph.add(g);
         }
         showGraph(graph);
@@ -238,21 +224,21 @@ public class GraphFragment extends Fragment {
                     Double TRY = rates.getDouble("TRY");
                     Double UAH = rates.getDouble("UAH");
 
-                    indonesia = Double.toString(IDR);
-                    america = Double.toString(USD);
-                    australia = Double.toString(AUD);
-                    japanese = Double.toString(JPY);
-                    russia = Double.toString(RUB);
-                    hongkong = Double.toString(HKD);
-                    chinese = Double.toString(CNY);
-                    arabic = Double.toString(AED);
-                    euro = Double.toString(EUR);
-                    czech = Double.toString(CZK);
-                    danish = Double.toString(DKK);
-                    sweden = Double.toString(SEK);
-                    poland = Double.toString(PLN);
-                    turkish = Double.toString(TRY);
-                    ukrainian = Double.toString(UAH);
+                    indonesia = String.format("%.3f", IDR);
+                    america =String.format("%.3f", USD);
+                    australia = String.format("%.3f", AUD);
+                    japanese = String.format("%.3f", JPY);
+                    russia = String.format("%.3f", RUB);
+                    hongkong = String.format("%.3f", HKD);
+                    chinese =String.format("%.3f", CNY);
+                    arabic = String.format("%.3f", AED);
+                    euro = String.format("%.3f", EUR);
+                    czech = String.format("%.3f", CZK);
+                    danish = String.format("%.3f", DKK);
+                    sweden = String.format("%.3f", SEK);
+                    poland = String.format("%.3f", PLN);
+                    turkish = String.format("%.3f", TRY);
+                    ukrainian = String.format("%.3f", UAH);
 
                 }catch (Exception e){
                     Log.d("ExceptionStudent", "onSuccess: " + e.getMessage());
