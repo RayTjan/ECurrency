@@ -38,10 +38,10 @@ public class CardGraph extends RecyclerView.Adapter<CardGraph.GraphViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull GraphViewHolder holder, int position) {
-//        Graph graph = listGraph.get(position);
-//        holder.state.setText(Graph.getState());
-//        holder.currency.setText(Graph.getCurrency());
-//        holder.value.setText(Graph.getValue());
+        Graph graph = listGraph.get(position);
+        holder.state.setText(graph.getState());
+        holder.currency.setText(graph.getCurrency());
+        holder.value.setText(graph.getValue());
     }
 
     @Override
